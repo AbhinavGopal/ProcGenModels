@@ -1,0 +1,3 @@
+ToolSet: 1.0 (local)Options: 
+
+Options:-DGTEST_ROOT=/Users/abhinav_gpyahoocom/googletest/googletest
