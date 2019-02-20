@@ -84,11 +84,9 @@ class DoublyLinkedListIterator {
       pos=pos->next;
   } //pre
   const DoublyLinkedListIterator<T> operator++(int a){
-      auto temp = this;
-      for (int i = 0; i < a; i++) {
-          this++;
-      }
-      return temp;
+      auto copy(*this);
+      ++(*this);
+      return copy;
   }
 
 
@@ -96,12 +94,10 @@ class DoublyLinkedListIterator {
   DoublyLinkedListIterator<T>& operator--(){
       pos=pos->prev;
   } //pre
-  const DoublyLinkedListIterator<T> operator--(int a) {
-      auto temp = this;
-      for (int i = 0; i < a; i++) {
-          this++;
-      }
-      return temp;
+  const DoublyLinkedListIterator<T> operator--(int) {
+      auto copy(*this);
+      --(*this);
+      return copy;
   }    //post
 
   //get a const reference to the value

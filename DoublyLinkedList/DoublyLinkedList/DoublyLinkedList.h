@@ -87,7 +87,7 @@ class DoublyLinkedList {
 
   //add a value to the back of the list
   void push_back(const T& value){
-      this->tail->next=DoubleLinkedNode<T> (*value);
+      this->tail->next=DoubleLinkedNode<T>(*value);
       this->tail->next->prev=this->tail;
       this->tail=this->tail->next;
   }
@@ -100,7 +100,7 @@ class DoublyLinkedList {
   //return the number of elements in the list
   int size() const{
       int i=0;
-      auto temp=this->head
+      auto temp=this->head;
       while (temp!=nullptr){
           i++;
           temp=temp->next;

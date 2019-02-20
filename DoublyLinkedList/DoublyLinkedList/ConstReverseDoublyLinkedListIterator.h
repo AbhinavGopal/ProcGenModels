@@ -83,11 +83,9 @@ public:
       pos=pos->prev;
   } //pre
   const ConstReverseDoublyLinkedListIterator<T> operator++(int a) {
-      auto temp = this;
-      for (int i = 0; i < a; i++) {
-          this++;
-      }
-      return temp;
+      auto copy(*this);
+      ++(*this);
+      return copy;
   }//post
 
   //go to the previous element
@@ -95,11 +93,9 @@ public:
       pos=pos->next;
   } //pre
   const ConstReverseDoublyLinkedListIterator<T> operator--(int a){
-      auto temp = this;
-      for (int i = 0; i < a; i++) {
-          this++;
-      }
-      return temp;
+      auto copy(*this);
+      --(*this);
+      return copy;
   }//post
 
   //get a const reference to the value

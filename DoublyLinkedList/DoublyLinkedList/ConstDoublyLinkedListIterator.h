@@ -69,7 +69,7 @@ class ConstDoublyLinkedListIterator {
 
   //is the iterator safe to dereference?
   operator bool() const{
-      if (this->nodelist->head==nullptr){
+      if (this->pos==nullptr){
           return false;
       }
       return true;
@@ -80,11 +80,9 @@ class ConstDoublyLinkedListIterator {
       pos=pos->next;
   } //pre
   const ConstDoublyLinkedListIterator<T> operator++(int a){
-      auto temp = this;
-      for (int i = 0; i < a; i++) {
-          this++;
-      }
-      return temp;
+      auto copy(*this);
+      ++(*this);
+      return copy;
   }//post
 
   //go to the previous element
@@ -92,12 +90,9 @@ class ConstDoublyLinkedListIterator {
       pos=pos->prev;
   } //pre
   const ConstDoublyLinkedListIterator<T> operator--(int a){
-      auto temp = this;
-      for (int i = 0; i < a; i++) {
-          this++;
-      }
-      return temp;
-  } //post
+      auto copy(*this);
+      --(*this);
+      return copy;
 
   //get a const reference to the value
   const T& operator*() const{
