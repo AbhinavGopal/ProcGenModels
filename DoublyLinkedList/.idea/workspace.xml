@@ -42,78 +42,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9e85791-21d5-414a-a03a-d4679b3e8283" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/Doubly Linked List.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DoubleLinkedListTest.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DoubleLinkedListTest.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DoublyLinkedList/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DoublyLinkedList/ConstDoublyLinkedListIterator.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DoublyLinkedList/ConstReverseDoublyLinkedListIterator.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DoublyLinkedList/DoubleLinkedNode.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DoublyLinkedList/DoublyLinkedList.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DoublyLinkedList/DoublyLinkedListIterator.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DoublyLinkedList/ReverseDoublyLinkedListIterator.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DoublyLinkedListPrompt.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.13.2/CMakeCCompiler.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.13.2/CMakeCXXCompiler.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.13.2/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.13.2/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.13.2/CMakeSystem.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.13.2/CompilerIdC/CMakeCCompilerId.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.13.2/CompilerIdC/a.out" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.13.2/CompilerIdCXX/CMakeCXXCompilerId.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.13.2/CompilerIdCXX/a.out" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DoubleLinkedListTester.dir/CXX.includecache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DoubleLinkedListTester.dir/DependInfo.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DoubleLinkedListTester.dir/build.make" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DoubleLinkedListTester.dir/cmake_clean.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DoubleLinkedListTester.dir/depend.internal" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DoubleLinkedListTester.dir/depend.make" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DoubleLinkedListTester.dir/flags.make" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DoubleLinkedListTester.dir/link.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DoubleLinkedListTester.dir/progress.make" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Progress/1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Progress/2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Progress/count.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cmake.check_cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/feature_tests.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/feature_tests.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/feature_tests.cxx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/DoublyLinkedList/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/DoublyLinkedList/CMakeFiles/progress.marks" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/DoublyLinkedList/DoubleLinkedList.cbp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/DoublyLinkedList/Makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/DoublyLinkedList/cmake_install.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/TestDoubleLinkedList.cbp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/setup.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ECS36B/Homework2/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ECS36B/Homework2/DoublyLinkedList/doublylinkedlist.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ECS36B/Homework2/DoublyLinkedList/doublylinkedlist.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ConnectN/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../ConnectN/Board.c" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../ConnectN/Board.h" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../ConnectN/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ConnectN/CursorTracker.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ConnectN/CursorTracker.h" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../ConnectN/main.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ConnectN/move.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ConnectN/move.h" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../ConnectN/win.c" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../ConnectN/win.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Doubly Linked List/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS36B/Homework2/DoublyLinkedList/doublylinkedlist.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS36B/Homework2/DoublyLinkedList/doublylinkedlist.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS36B/Homework2/DoublyLinkedList/doublylinkedlist.h" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS36B/Homework2/DoublyLinkedList/doublylinkedlist.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../untitled1/.idea/vcs.xml" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -260,7 +202,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="429" />
     <option name="y" value="196" />
     <option name="width" value="1280" />
@@ -331,12 +273,12 @@
       <workItem from="1550534522992" duration="2409000" />
       <workItem from="1550554784304" duration="4134000" />
       <workItem from="1550562638345" duration="3268000" />
-      <workItem from="1550648776258" duration="5426000" />
+      <workItem from="1550648776258" duration="5680000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15237000" />
+    <option name="totallyTimeSpent" value="15491000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -348,7 +290,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="429" y="196" width="1280" height="738" extended-state="0" />
+    <frame x="429" y="196" width="1280" height="738" extended-state="1" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26171243" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
