@@ -63,7 +63,8 @@ class DoublyLinkedList {
     virtual ~DoublyLinkedList();
 
   //remove all of the elements from your list
-  void clear();
+  void clear(){
+  }
 
   //get a reference to the front element in the list
   const T& front() const{
@@ -92,10 +93,20 @@ class DoublyLinkedList {
   }
 
   //is the list empty?
-  bool empty() const;
+  bool empty() const{
+      return (this->head==nullptr);
+  }
 
   //return the number of elements in the list
-  int size() const;
+  int size() const{
+      int i=0;
+      auto temp=this->head
+      while (temp!=nullptr){
+          i++;
+          temp=temp->next;
+      }
+      return i;
+  }
 
   //return a constant bidirectional iterator to the front of the list
   const_iterator begin() const;
