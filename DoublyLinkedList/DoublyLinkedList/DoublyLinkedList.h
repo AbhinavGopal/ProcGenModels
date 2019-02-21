@@ -217,7 +217,7 @@ std::ostream& operator<<(std::ostream& out, const DoublyLinkedList<T>& doublyLin
 
 //read elements from the stream as long as it is good
 // or until a newline (\n) is encountered
-//if a newline is encontered it should be consumed
+//if a newline is encountered it should be consumed
 template<typename T>
 std::istream& operator>>(std::istream& in, DoublyLinkedList<T>& doublyLinkedList);
 
