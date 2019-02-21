@@ -14,7 +14,7 @@ class ConstReverseDoublyLinkedListIterator {
   //you are free to add (and will likely need to add)
   //more members and methods
 public:
-    DoubleLinkedNode<T>* nodelist;
+    DoublyLinkedList<T>* nodelist;
     DoubleLinkedNode<T>& pos;
   //copy constructor
   ConstReverseDoublyLinkedListIterator(const ConstReverseDoublyLinkedListIterator& orig) {
@@ -53,8 +53,8 @@ public:
       if (this->pos->data != rhs->pos->data){
           return false;
       }
-      auto tmp1 = this->head;
-      auto tmp2 = rhs->head;
+      auto tmp1 = this->getHead();
+      auto tmp2 = rhs->getHead();
       while (tmp1 != nullptr) {
           if (tmp1->data != tmp2->data) {
               return false;
@@ -72,7 +72,7 @@ public:
 
   //is the iterator safe to dereference?
   operator bool() const {
-      if (this->nodelist->head->data==nullptr){
+      if (this->nodelist->getHead()==nullptr){
           return false;
       }
       return true;

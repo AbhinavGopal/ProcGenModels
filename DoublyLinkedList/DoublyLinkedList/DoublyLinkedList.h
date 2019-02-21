@@ -5,6 +5,7 @@
 #ifndef LINKEDLIST_DOUBLYLINKEDLIST_H
 #define LINKEDLIST_DOUBLYLINKEDLIST_H
 
+#include <cstdlib>
 #include <vector>
 #include <memory>
 #include "DoubleLinkedNode.h"
@@ -28,13 +29,13 @@ class DoublyLinkedList {
   explicit DoublyLinkedList(const std::vector<T>& values){
       int i=0;
       Node_Ptr temp= nullptr;
-      while (i<values.length()){
+      while (i<values.size()){
           if (i==0){
-              auto head=Node_Ptr(values[i]);
+              Node_Ptr head=Node_Ptr(values[i]);
               temp= head;
               temp->prev=nullptr;
           }
-          if (i==values.length()-1){
+          if (i==values.size()-1){
               auto tail=Node_Ptr(values[i]);
               temp->next=tail;
               temp=temp->next;
@@ -57,26 +58,53 @@ class DoublyLinkedList {
       len=0;
   }
 
-    DoublyLinkedList(const DoubleLinkedNode<T> *head);
+    const DoubleLinkedNode<T> *getHead() const {
+        return head;
+    }
+
+    const DoubleLinkedNode<T> *getTail() const {
+        return tail;
+    }
+
+    int getLen() const {
+        return len;
+    }
 
 
-    virtual ~DoublyLinkedList();
+    virtual ~DoublyLinkedList(){
+        auto temp=this->getTail();
+        while (temp!=nullptr){
+            temp=temp->prev;
+            free(temp->next);
+        }
+        free(this->getHead());
+    }
 
   //remove all of the elements from your list
   void clear(){
+      auto tmp = this->getTail();
+      while (tmp->prev!=nullptr){
+          tmp=tmp->prev;
+          free(tmp->next);
+      }
+          free(tmp);
   }
 
   //get a reference to the front element in the list
   const T& front() const{
-      return head->data;
+      return &(this->getHead()->data);
   }
-  T& front();
+  T& front(){
+      return &(this->getHead()->data);
+  }
 
   //get a reference to the last element in the list
   const T& back() const{
-      return tail->data;
+      return &(this->getTail()->data);
   }
-  T& back();
+  T& back(){
+      return &(this->getTail()->data);
+  }
 
   //add a value to the front of the list
   void push_front(const T& value){
@@ -109,18 +137,34 @@ class DoublyLinkedList {
   }
 
   //return a constant bidirectional iterator to the front of the list
-  const_iterator begin() const;
-  const_iterator end() const;
+  const_iterator begin() const{
+      return const_iterator(this->getHead());
+  }
+  const_iterator end() const{
+      return const_iterator(this->getTail());
+  }
 
   //return a nonconstant bidirectional iterator to the front of the list
-  iterator begin();
-  iterator end();
+  iterator begin(){
+      return iterator(this->getHead());
+  }
+  iterator end(){
+      return iterator(this->getTail());
+  }
 
-  const_reverse_iterator crbegin() const;
-  const_reverse_iterator crend() const;
+  const_reverse_iterator crbegin() const{
+      return const_reverse_iterator(this->getTail());
+  }
+  const_reverse_iterator crend() const{
+      return const_reverse_iterator(this->getHead());
+  }
 
-  reverse_iterator rbegin();
-  reverse_iterator rend();
+  reverse_iterator rbegin(){
+      return reverse_iterator(this->getHead());
+  }
+  reverse_iterator rend(){
+      return reverse_iterator(this->getTail());
+  }
 
   //insert the value at the position in the list
   //I promise not to use the iterator again after the insertion is done
@@ -128,7 +172,14 @@ class DoublyLinkedList {
   //And the iterator was pointing to the 9 and we wanted to
   //insert -22 the result would be
   //1 <-> 22 <-> 9 <-> 17
-  void insert(iterator& position, const T& value);
+  void insert(iterator& position, const T& value){
+      auto toadd=DoubleLinkedNode<T>(*value);
+      auto tmp=position->pos;
+      tmp->next->prev=toadd;
+      tmp->next->prev->next=tmp->next;
+      tmp->next=toadd;
+      tmp->next->prev=tmp;
+  }
 
   //remove the element at the position pointed to
   //by the iterator.
@@ -136,7 +187,16 @@ class DoublyLinkedList {
   //An example if we had the list 1 <-> 9 <-> 17
   //And when the wanted to erase the iterator was at the 9
   //1 <-> 17
-  void erase(iterator& position);
+  void erase(iterator& position){
+      int index=position->getSizeBefore();
+      auto tmp=this->getHead();
+      for (int i=0;i<index;i++){
+          tmp=tmp->next;
+      }
+      tmp->prev->next=tmp->next;
+      tmp->next->prev=tmp->prev;
+      free(tmp);
+  }
 
  private:
   Node_Ptr head;
@@ -147,7 +207,13 @@ class DoublyLinkedList {
 //write to the stream each element in the list in order
 //with a space in between them
 template<typename T>
-std::ostream& operator<<(std::ostream& out, const DoublyLinkedList<T>& doublyLinkedList);
+std::ostream& operator<<(std::ostream& out, const DoublyLinkedList<T>& doublyLinkedList){
+    for(DoublyLinkedListIterator<T>* itr = doublyLinkedList->cbegin(); itr !=itr->cend(); ++itr){
+        std::cout << itr->pos->data <<" ";
+    }
+
+
+}
 
 //read elements from the stream as long as it is good
 // or until a newline (\n) is encountered

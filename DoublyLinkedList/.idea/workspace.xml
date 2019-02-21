@@ -44,10 +44,11 @@
     <list default="true" id="c9e85791-21d5-414a-a03a-d4679b3e8283" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DoublyLinkedList/ConstDoublyLinkedListIterator.h" beforeDir="false" afterPath="$PROJECT_DIR$/DoublyLinkedList/ConstDoublyLinkedListIterator.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DoublyLinkedList/ConstReverseDoublyLinkedListIterator.h" beforeDir="false" afterPath="$PROJECT_DIR$/DoublyLinkedList/ConstReverseDoublyLinkedListIterator.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DoublyLinkedList/DoublyLinkedList.h" beforeDir="false" afterPath="$PROJECT_DIR$/DoublyLinkedList/DoublyLinkedList.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DoublyLinkedList/DoublyLinkedListIterator.h" beforeDir="false" afterPath="$PROJECT_DIR$/DoublyLinkedList/DoublyLinkedListIterator.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DoublyLinkedList/ReverseDoublyLinkedListIterator.h" beforeDir="false" afterPath="$PROJECT_DIR$/DoublyLinkedList/ReverseDoublyLinkedListIterator.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DoubleLinkedListTester.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DoubleLinkedListTester.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ECS36B/Homework2/DoublyLinkedList/doublylinkedlist.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS36B/Homework2/DoublyLinkedList/doublylinkedlist.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ECS36B/Homework2/DoublyLinkedList/doublylinkedlist.h" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS36B/Homework2/DoublyLinkedList/doublylinkedlist.h" afterDir="false" />
     </list>
@@ -61,13 +62,14 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DoublyLinkedList/DoublyLinkedListIterator.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="92" column="18" selection-start-line="92" selection-start-column="18" selection-end-line="92" selection-end-column="18" />
+            <state relative-caret-position="375">
+              <caret line="25" selection-start-line="25" selection-end-line="25" />
               <folding>
                 <element signature="e#40#69#0" expanded="true" />
+                <element signature="e#217#229#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -76,34 +78,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DoublyLinkedList/ConstReverseDoublyLinkedListIterator.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-125">
-              <caret line="84" column="64" selection-start-line="84" selection-start-column="64" selection-end-line="84" selection-end-column="64" />
+            <state relative-caret-position="1290">
+              <caret line="86" column="16" selection-start-line="86" selection-start-column="16" selection-end-line="86" selection-end-column="16" />
               <folding>
                 <element signature="e#40#69#0" expanded="true" />
+                <element signature="e#247#259#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DoublyLinkedList/DoublyLinkedList.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="536">
-              <caret line="89" column="42" selection-start-line="89" selection-start-column="42" selection-end-line="89" selection-end-column="42" />
+            <state relative-caret-position="128">
+              <caret line="33" selection-start-line="33" selection-end-line="33" />
               <folding>
-                <element signature="e#276#288#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DoublyLinkedList/ReverseDoublyLinkedListIterator.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
-              <caret line="106" column="4" selection-start-line="106" selection-start-column="4" selection-end-line="106" selection-end-column="30" />
-              <folding>
-                <element signature="e#40#69#0" expanded="true" />
+                <element signature="e#118#136#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -112,8 +103,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DoublyLinkedList/ConstDoublyLinkedListIterator.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="75" column="3" selection-start-line="75" selection-start-column="3" selection-end-line="75" selection-end-column="3" />
+            <state relative-caret-position="309">
+              <caret line="84" column="25" selection-start-line="84" selection-start-column="25" selection-end-line="84" selection-end-column="25" />
               <folding>
                 <element signature="e#40#69#0" expanded="true" />
               </folding>
@@ -122,10 +113,48 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.cpp">
+        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="300">
+              <caret line="20" column="67" selection-start-line="20" selection-start-column="67" selection-end-line="20" selection-end-column="67" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DoublyLinkedList/ReverseDoublyLinkedListIterator.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1080">
+              <caret line="72" column="40" selection-start-line="72" selection-start-column="40" selection-end-line="72" selection-end-column="40" />
+              <folding>
+                <element signature="e#40#69#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DoubleLinkedListTest.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2355">
+              <caret line="157" selection-start-line="157" selection-end-line="157" />
+              <folding>
+                <element signature="e#41#59#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DoubleLinkedListTest.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="128">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
+              <folding>
+                <element signature="e#248#260#0" expanded="true" />
+                <element signature="e#1860#1872#0" expanded="true" />
+                <element signature="e#3296#3308#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -143,24 +172,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DoubleLinkedListTest.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DoubleLinkedListTest.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="81" selection-start-line="81" selection-end-line="81" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DoublyLinkedList/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
@@ -170,6 +181,14 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>get</find>
+      <find>head</find>
+      <find>erase</find>
+      <find>insert</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -184,21 +203,22 @@
       <list>
         <option value="$PROJECT_DIR$/DoublyLinkedList/DoubleLinkedNode.cpp" />
         <option value="$PROJECT_DIR$/DoublyLinkedList/DoublyLinkedList.cpp" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/DoublyLinkedList/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/DoublyLinkedList/DoubleLinkedNode.h" />
-        <option value="$PROJECT_DIR$/DoublyLinkedList/ReverseDoublyLinkedListIterator.h" />
-        <option value="$PROJECT_DIR$/DoublyLinkedList/ConstReverseDoublyLinkedListIterator.h" />
-        <option value="$PROJECT_DIR$/DoublyLinkedList/DoublyLinkedList.h" />
-        <option value="$PROJECT_DIR$/DoublyLinkedList/ConstDoublyLinkedListIterator.h" />
         <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/DoublyLinkedList/ConstReverseDoublyLinkedListIterator.h" />
+        <option value="$PROJECT_DIR$/DoublyLinkedList/ConstDoublyLinkedListIterator.h" />
+        <option value="$PROJECT_DIR$/DoublyLinkedList/ReverseDoublyLinkedListIterator.h" />
         <option value="$PROJECT_DIR$/DoublyLinkedList/DoublyLinkedListIterator.h" />
+        <option value="$PROJECT_DIR$/DoublyLinkedList/DoublyLinkedList.h" />
       </list>
     </option>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="y" value="23" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-450" />
+    <option name="y" value="535" />
     <option name="width" value="1280" />
     <option name="height" value="738" />
   </component>
@@ -267,12 +287,13 @@
       <workItem from="1550534522992" duration="2409000" />
       <workItem from="1550554784304" duration="4134000" />
       <workItem from="1550562638345" duration="3268000" />
-      <workItem from="1550648776258" duration="7928000" />
+      <workItem from="1550648776258" duration="20475000" />
+      <workItem from="1550774500574" duration="721000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17739000" />
+    <option name="totallyTimeSpent" value="31007000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -284,10 +305,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="738" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="738" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26171243" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2657512" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -336,68 +357,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+    <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoubleLinkedListTest.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
+        <state relative-caret-position="90">
           <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoublyLinkedList/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="46" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoublyLinkedList/ReverseDoublyLinkedListIterator.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="106" column="4" selection-start-line="106" selection-start-column="4" selection-end-line="106" selection-end-column="30" />
-          <folding>
-            <element signature="e#40#69#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DoubleLinkedListTest.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="81" selection-start-line="81" selection-end-line="81" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DoublyLinkedList/ConstReverseDoublyLinkedListIterator.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-125">
-          <caret line="84" column="64" selection-start-line="84" selection-start-column="64" selection-end-line="84" selection-end-column="64" />
+        <state relative-caret-position="1290">
+          <caret line="86" column="16" selection-start-line="86" selection-start-column="16" selection-end-line="86" selection-end-column="16" />
+          <folding>
+            <element signature="e#40#69#0" expanded="true" />
+            <element signature="e#247#259#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="67" selection-start-line="20" selection-start-column="67" selection-end-line="20" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoublyLinkedList/ReverseDoublyLinkedListIterator.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1080">
+          <caret line="72" column="40" selection-start-line="72" selection-start-column="40" selection-end-line="72" selection-end-column="40" />
           <folding>
             <element signature="e#40#69#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DoublyLinkedList/ConstDoublyLinkedListIterator.h">
+    <entry file="file://$PROJECT_DIR$/DoubleLinkedListTest.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="75" column="3" selection-start-line="75" selection-start-column="3" selection-end-line="75" selection-end-column="3" />
+        <state relative-caret-position="2355">
+          <caret line="157" selection-start-line="157" selection-end-line="157" />
           <folding>
-            <element signature="e#40#69#0" expanded="true" />
+            <element signature="e#41#59#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
@@ -411,22 +412,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DoublyLinkedList/DoublyLinkedList.h">
+    <entry file="file://$PROJECT_DIR$/DoublyLinkedList/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="536">
-          <caret line="89" column="42" selection-start-line="89" selection-start-column="42" selection-end-line="89" selection-end-column="42" />
-          <folding>
-            <element signature="e#276#288#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="180">
+          <caret line="12" column="46" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DoublyLinkedList/DoublyLinkedListIterator.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="92" column="18" selection-start-line="92" selection-start-column="18" selection-end-line="92" selection-end-column="18" />
+        <state relative-caret-position="375">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
           <folding>
             <element signature="e#40#69#0" expanded="true" />
+            <element signature="e#217#229#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoublyLinkedList/ConstDoublyLinkedListIterator.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="84" column="25" selection-start-line="84" selection-start-column="25" selection-end-line="84" selection-end-column="25" />
+          <folding>
+            <element signature="e#40#69#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoubleLinkedListTest.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="e#248#260#0" expanded="true" />
+            <element signature="e#1860#1872#0" expanded="true" />
+            <element signature="e#3296#3308#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DoublyLinkedList/DoublyLinkedList.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+          <folding>
+            <element signature="e#118#136#0" expanded="true" />
           </folding>
         </state>
       </provider>

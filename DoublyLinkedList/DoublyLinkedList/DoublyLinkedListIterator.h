@@ -7,7 +7,8 @@
 #ifndef LINKEDLIST_GENERICDOUBLYLINKEDLISTITERATOR_H
 #define LINKEDLIST_GENERICDOUBLYLINKEDLISTITERATOR_H
 
-
+template <typename T>
+class DoublyLinkedList;
 template<typename T>
 class DoublyLinkedListIterator {
   //you must implement at least the methods below
@@ -16,7 +17,7 @@ class DoublyLinkedListIterator {
 
  public:
     //Change to pointers if references fail
-    DoubleLinkedNode<T>* nodelist;
+    DoublyLinkedList<T>* nodelist;
     DoubleLinkedNode<T>& pos;
   DoublyLinkedListIterator(const DoublyLinkedListIterator& orig){
       this->nodelist = orig->nodelist;
@@ -54,8 +55,8 @@ class DoublyLinkedListIterator {
       if (this->pos->data != rhs->pos->data){
           return false;
       }
-      auto tmp1 = this->head;
-      auto tmp2 = rhs->head;
+      auto tmp1 = this->getHead();
+      auto tmp2 = rhs->getHead();
       while (tmp1 != nullptr) {
           if (tmp1->data != tmp2->data) {
               return false;
@@ -73,7 +74,7 @@ class DoublyLinkedListIterator {
 
   //is the iterator safe to dereference?
   operator bool() const{
-      if (this->nodelist->head->data==nullptr){
+      if (this->nodelist->getHead()==nullptr){
           return false;
       }
       return true;
