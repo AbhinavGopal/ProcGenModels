@@ -11,9 +11,9 @@
 template<typename T>
 class DoubleLinkedNode {
     public:
-        T* data;
-        DoubleLinkedNode* next;
-        DoubleLinkedNode* prev;
+        T data;
+        DoubleLinkedNode<T>* next;
+        DoubleLinkedNode<T>* prev;
         DoubleLinkedNode(const T& ndata);
 
         };

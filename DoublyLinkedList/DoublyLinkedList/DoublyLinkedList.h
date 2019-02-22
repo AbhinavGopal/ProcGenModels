@@ -101,18 +101,18 @@ public:
 
   //get a reference to the front element in the list
   const T& front() const{
-      return *(this->getHead()->data);
+      return head->data;
   }
   T& front(){
-      return *(this->getHead()->data);
+      return head->data;
   }
 
   //get a reference to the last element in the list
   const T& back() const{
-      return *(this->getTail()->data);
+      return tail->data;
   }
   T& back(){
-      return *(this->getTail()->data);
+      return tail->data;
   }
 
   //add a value to the front of the list
@@ -182,7 +182,7 @@ public:
   //insert -22 the result would be
   //1 <-> 22 <-> 9 <-> 17
   void insert(iterator& position, const T& value){
-      auto toadd=DoubleLinkedNode<T>(*value);
+      auto toadd=new DoubleLinkedNode<T>(value);
       auto tmp=position->pos;
       tmp->next->prev=toadd;
       tmp->next->prev->next=tmp->next;
