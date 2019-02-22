@@ -39,16 +39,16 @@ public:
   //as in the vector and in the same order
   explicit DoublyLinkedList(const std::vector<T>& values){
       int i=0;
-      Node_Ptr temp= nullptr;
+      Node_Ptr temp;//= nullptr;
       for (const auto value : values){
           if (head==nullptr){
-              temp=new Node_Ptr(value);
+              temp=new DoubleLinkedNode<T>(value);
               head=temp;
               temp->prev=nullptr;
               temp->next=nullptr;
           }
           else{
-              auto t1=new Node_Ptr(value);
+              auto t1=new DoubleLinkedNode<T>(value);
               tail=t1;
               temp->next=tail;
               tail->prev=temp;
@@ -101,30 +101,30 @@ public:
 
   //get a reference to the front element in the list
   const T& front() const{
-      return this->getHead()->data;
+      return *(this->getHead()->data);
   }
   T& front(){
-      return this->getHead()->data;
+      return *(this->getHead()->data);
   }
 
   //get a reference to the last element in the list
   const T& back() const{
-      return this->getTail()->data;
+      return *(this->getTail()->data);
   }
   T& back(){
-      return this->getTail()->data;
+      return *(this->getTail()->data);
   }
 
   //add a value to the front of the list
   void push_front(const T& value){
-      this->head->prev=new DoubleLinkedNode<T>(*value);
+      this->head->prev=new DoubleLinkedNode<T>(value);
       this->head->prev->next=this->head;
       this->head=this->head->prev;
   }
 
   //add a value to the back of the list
   void push_back(const T& value){
-      this->tail->next=new DoubleLinkedNode<T>(*value);
+      this->tail->next=new DoubleLinkedNode<T>(value);
       this->tail->next->prev=this->tail;
       this->tail=this->tail->next;
   }

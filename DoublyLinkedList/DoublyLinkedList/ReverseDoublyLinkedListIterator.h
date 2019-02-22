@@ -11,7 +11,7 @@ template<typename T>
 class ReverseDoublyLinkedListIterator {
  public:
     DoubleLinkedNode<T>* nodelist;
-    DoubleLinkedNode<T>& pos;
+    DoubleLinkedNode<T>* pos;
   //you must implement at least the methods below
   //you are free to add (and will likely need to add)
   //more members and methods
@@ -20,7 +20,7 @@ class ReverseDoublyLinkedListIterator {
   //copy constructor
   ReverseDoublyLinkedListIterator(const ReverseDoublyLinkedListIterator& orig){
     this->nodelist = orig->nodelist;
-    this->pos = orig->pos;
+    this*pos = orig->pos;
   }
     int getSizeBefore() {
       int size = 0;
@@ -89,14 +89,14 @@ class ReverseDoublyLinkedListIterator {
     return copy;
 
   }//post
-    DoublyLinkedListIterator<T>& operator+=(int rhs){
+    ReverseDoublyLinkedListIterator<T>& operator+=(int rhs){
       for (int i = 0; i < rhs; ++i) {
         pos=pos->prev;
         return *this;
       }
     }
 
-    DoublyLinkedListIterator<T>& operator-=(int rhs){
+    ReverseDoublyLinkedListIterator<T>& operator-=(int rhs){
       for (int i = 0; i < rhs; ++i) {
         pos=pos->next;
         return *this;

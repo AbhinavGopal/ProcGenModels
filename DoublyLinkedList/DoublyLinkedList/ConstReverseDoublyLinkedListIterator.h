@@ -15,7 +15,7 @@ class ConstReverseDoublyLinkedListIterator {
     //more members and methods
 public:
     DoublyLinkedList<T> *nodelist;
-    DoubleLinkedNode<T> &pos;
+    DoubleLinkedNode<T> *pos;
 
     //copy constructor
     ConstReverseDoublyLinkedListIterator(const ConstReverseDoublyLinkedListIterator &orig) {

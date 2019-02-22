@@ -15,7 +15,7 @@ class ConstDoublyLinkedListIterator {
 
 public:
     DoublyLinkedList<T> *nodelist;
-    DoubleLinkedNode<T> &pos;
+    DoubleLinkedNode<T> *pos;
 
     ConstDoublyLinkedListIterator(const ConstDoublyLinkedListIterator &orig) {
         this->pos = orig->pos;

@@ -18,7 +18,7 @@ class DoublyLinkedListIterator {
  public:
     //Change to pointers if references fail
     DoublyLinkedList<T>* nodelist;
-    DoubleLinkedNode<T>& pos;
+    DoubleLinkedNode<T>* pos;
   DoublyLinkedListIterator(const DoublyLinkedListIterator& orig){
       this->nodelist = orig->nodelist;
       this->pos = orig->pos;

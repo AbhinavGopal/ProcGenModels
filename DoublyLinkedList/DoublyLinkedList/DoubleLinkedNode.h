@@ -14,14 +14,11 @@ class DoubleLinkedNode {
         T* data;
         DoubleLinkedNode* next;
         DoubleLinkedNode* prev;
-        explicit DoubleLinkedNode(T ndata){
-                *data=ndata;
-                next= nullptr;
-                prev= nullptr;
-            }
+        DoubleLinkedNode(const T& ndata);
 
         };
-
-
+template<typename T>
+DoubleLinkedNode<T>::DoubleLinkedNode(const T& ndata):data(ndata), next(nullptr), prev(nullptr){
+}
 
 #endif //LINKEDLIST_DOUBLELINKEDNODE_H
