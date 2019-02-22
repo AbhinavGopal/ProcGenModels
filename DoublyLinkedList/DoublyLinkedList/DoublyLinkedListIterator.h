@@ -52,13 +52,13 @@ class DoublyLinkedListIterator {
       if (!((getSizeBefore() == rhs.getSizeBefore()) && getSizeAfter() == rhs.getSizeAfter())) {
           return false;
       }
-      if (this->pos->data != rhs->pos->data){
+      if (*(this->pos->data) != *(rhs->pos->data)){
           return false;
       }
       auto tmp1 = this->getHead();
       auto tmp2 = rhs->getHead();
       while (tmp1 != nullptr) {
-          if (tmp1->data != tmp2->data) {
+          if (*(tmp1->data) != *(tmp2->data)) {
               return false;
           }
           tmp1 = tmp1->next;
@@ -80,11 +80,13 @@ class DoublyLinkedListIterator {
       return true;
   } //check if not null
 
+    DoublyLinkedListIterator<T>& operator++(){
+        pos=pos->next;
+        return *this;
+    } //pre
+    // pre
   //go to the next element
-  DoublyLinkedListIterator<T>& operator++(){
-      pos=pos->next;
-  } //pre
-  const DoublyLinkedListIterator<T> operator++(int a){
+  const DoublyLinkedListIterator<T> operator++(int ){
       auto copy(*this);
       ++(*this);
       return copy;
@@ -94,6 +96,7 @@ class DoublyLinkedListIterator {
   //go to the previous element
   DoublyLinkedListIterator<T>& operator--(){
       pos=pos->prev;
+      return *this;
   } //pre
   const DoublyLinkedListIterator<T> operator--(int) {
       auto copy(*this);
@@ -101,14 +104,15 @@ class DoublyLinkedListIterator {
       return copy;
   }    //post
 
+
   //get a const reference to the value
   const T& operator*() const{
-      return &(this->pos->data);
+      return this->pos->data;
   }
 
   //get a non const iterator
   T& operator*(){
-      return &(this->pos->data);
+      return this->pos->data;
   }
 
 };

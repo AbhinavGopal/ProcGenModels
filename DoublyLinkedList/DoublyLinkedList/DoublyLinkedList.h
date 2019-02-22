@@ -16,7 +16,18 @@
 
 template<typename T>
 class DoublyLinkedList {
- public:
+
+public:
+//    friend std::ostream& operator<<(std::ostream& out, const DoublyLinkedList<T>& doublyLinkedList);
+//    friend std::istream& operator>>(std::istream& in, DoublyLinkedList<T>& doublyLinkedList);
+    void setHead(const DoubleLinkedNode<T> *head) {
+        DoublyLinkedList::head = head;
+    }
+
+    void setTail(const DoubleLinkedNode<T> *tail) {
+        DoublyLinkedList::tail = tail;
+    }
+
   using Node_Ptr = DoubleLinkedNode<T>*;
 
   using iterator =  DoublyLinkedListIterator<T>*;
@@ -29,21 +40,20 @@ class DoublyLinkedList {
   explicit DoublyLinkedList(const std::vector<T>& values){
       int i=0;
       Node_Ptr temp= nullptr;
-      while (i<values.size()){
-          if (i==0){
-              Node_Ptr head=Node_Ptr(values[i]);
-              temp= head;
+      for (const auto value : values){
+          if (head==nullptr){
+              temp=new Node_Ptr(value);
+              head=temp;
               temp->prev=nullptr;
-          }
-          if (i==values.size()-1){
-              auto tail=Node_Ptr(values[i]);
-              temp->next=tail;
-              temp=temp->next;
+              temp->next=nullptr;
           }
           else{
-              temp->next=Node_Ptr(values[i]);
-              temp->next->prev=temp;
-              temp=temp->next;
+              auto t1=new Node_Ptr(value);
+              tail=t1;
+              temp->next=tail;
+              tail->prev=temp;
+              temp=tail;
+              temp->next=nullptr;
           }
           i++;
       }
@@ -70,14 +80,13 @@ class DoublyLinkedList {
         return len;
     }
 
-
     virtual ~DoublyLinkedList(){
         auto temp=this->getTail();
         while (temp!=nullptr){
             temp=temp->prev;
-            free(temp->next);
+            delete(temp->next);
         }
-        free(this->getHead());
+        delete(this->getHead());
     }
 
   //remove all of the elements from your list
@@ -85,37 +94,37 @@ class DoublyLinkedList {
       auto tmp = this->getTail();
       while (tmp->prev!=nullptr){
           tmp=tmp->prev;
-          free(tmp->next);
+          delete(tmp->next);
       }
-          free(tmp);
+          delete(tmp);
   }
 
   //get a reference to the front element in the list
   const T& front() const{
-      return &(this->getHead()->data);
+      return this->getHead()->data;
   }
   T& front(){
-      return &(this->getHead()->data);
+      return this->getHead()->data;
   }
 
   //get a reference to the last element in the list
   const T& back() const{
-      return &(this->getTail()->data);
+      return this->getTail()->data;
   }
   T& back(){
-      return &(this->getTail()->data);
+      return this->getTail()->data;
   }
 
   //add a value to the front of the list
   void push_front(const T& value){
-      this->head->prev=DoubleLinkedNode<T>(*value);
+      this->head->prev=new DoubleLinkedNode<T>(*value);
       this->head->prev->next=this->head;
       this->head=this->head->prev;
   }
 
   //add a value to the back of the list
   void push_back(const T& value){
-      this->tail->next=DoubleLinkedNode<T>(*value);
+      this->tail->next=new DoubleLinkedNode<T>(*value);
       this->tail->next->prev=this->tail;
       this->tail=this->tail->next;
   }
@@ -195,8 +204,9 @@ class DoublyLinkedList {
       }
       tmp->prev->next=tmp->next;
       tmp->next->prev=tmp->prev;
-      free(tmp);
+      delete(tmp);
   }
+
 
  private:
   Node_Ptr head;
@@ -209,9 +219,10 @@ class DoublyLinkedList {
 template<typename T>
 std::ostream& operator<<(std::ostream& out, const DoublyLinkedList<T>& doublyLinkedList){
     for(DoublyLinkedListIterator<T>* itr = doublyLinkedList->cbegin(); itr !=itr->cend(); ++itr){
-        std::cout << itr->pos->data <<" ";
+        std::cout << *(itr->pos->data) <<" ";
     }
 
+    return out;
 
 }
 
@@ -219,7 +230,21 @@ std::ostream& operator<<(std::ostream& out, const DoublyLinkedList<T>& doublyLin
 // or until a newline (\n) is encountered
 //if a newline is encountered it should be consumed
 template<typename T>
-std::istream& operator>>(std::istream& in, DoublyLinkedList<T>& doublyLinkedList);
+std::istream& operator>>(std::istream& in, DoublyLinkedList<T>& doublyLinkedList){
+    T first;
+    in>>first;
+    doublyLinkedList->setHead(new DoubleLinkedNode<T>*(first));
+    DoubleLinkedNode<T>* temp=doublyLinkedList->head;
+    in>>first;
+    while (first!=EOF){
+        temp->next=&(new DoubleLinkedNode<T>*(first));
+        temp->next->prev=temp;
+        temp=temp->next;
+        in>>first;
+    }
+    doublyLinkedList->setTail(temp);
+    return in;
+}
 
 
 #endif //LINKEDLIST_DOUBLYLINKEDLIST_H

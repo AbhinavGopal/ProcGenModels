@@ -11,11 +11,11 @@
 template<typename T>
 class DoubleLinkedNode {
     public:
-        T data;
+        T* data;
         DoubleLinkedNode* next;
         DoubleLinkedNode* prev;
         explicit DoubleLinkedNode(T ndata){
-                data=ndata;
+                *data=ndata;
                 next= nullptr;
                 prev= nullptr;
             }

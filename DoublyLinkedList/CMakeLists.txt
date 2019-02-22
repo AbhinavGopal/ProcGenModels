@@ -18,4 +18,4 @@ target_link_libraries(DoubleLinkedListTester
         DoubleLinkedList
         ${GTEST_BOTH_LIBRARIES}
         Threads::Threads)
-target_compile_options(DoubleLinkedListTester PRIVATE -Wall -Werror)
+target_compile_options(DoubleLinkedListTester PRIVATE -Werror)

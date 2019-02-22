@@ -14,7 +14,7 @@ class ConstDoublyLinkedListIterator {
     //more members and methods
 
 public:
-    DoubleLinkedNode<T> *nodelist;
+    DoublyLinkedList<T> *nodelist;
     DoubleLinkedNode<T> &pos;
 
     ConstDoublyLinkedListIterator(const ConstDoublyLinkedListIterator &orig) {
@@ -50,13 +50,13 @@ public:
         if (!((getSizeBefore() == rhs.getSizeBefore()) && getSizeAfter() == rhs.getSizeAfter())) {
             return false;
         }
-        if (this->pos->data != rhs->pos->data) {
+        if (*(this->pos->data) != *(rhs->pos->data)) {
             return false;
         }
         auto tmp1 = this->getHead();
         auto tmp2 = rhs->getHead();
         while (tmp1 != nullptr) {
-            if (tmp1->data != tmp2->data) {
+            if (*(tmp1->data) != *(tmp2->data)) {
                 return false;
             }
             tmp1 = tmp1->next;
@@ -72,7 +72,7 @@ public:
 
     //is the iterator safe to dereference?
     operator bool() const {
-        if (this->pos == nullptr) {
+        if (this->nodelist->getHead()==nullptr) {
             return false;
         }
         return true;
@@ -81,8 +81,9 @@ public:
     //go to the next element
     ConstDoublyLinkedListIterator<T> &operator++() {
         pos = pos->next;
+        return *this;
     } //pre
-    const ConstDoublyLinkedListIterator<T> operator++(int a) {
+    const ConstDoublyLinkedListIterator<T> operator++(int ) {
         auto copy(*this);
         ++(*this);
         return copy;
@@ -91,8 +92,9 @@ public:
     //go to the previous element
     ConstDoublyLinkedListIterator<T> &operator--() {
         pos = pos->prev;
+        return *this;
     } //pre
-    const ConstDoublyLinkedListIterator<T> operator--(int a) {
+    const ConstDoublyLinkedListIterator<T> operator--(int ) {
         auto copy(*this);
         --(*this);
         return copy;
@@ -101,7 +103,7 @@ public:
     };
     //get a const reference to the value
     const T &operator*() const {
-        return &(this->pos->data);
+        return this->pos->data;
     }
 
 };
