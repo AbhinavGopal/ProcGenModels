@@ -14,7 +14,8 @@
 #include "ConstDoublyLinkedListIterator.h"
 #include "ConstReverseDoublyLinkedListIterator.h"
 
-
+template<typename T>
+class DoubleLinkedNode;
 
 template<typename T>
 class DoublyLinkedList {
@@ -91,22 +92,23 @@ public:
     }
 
     virtual ~DoublyLinkedList(){
-        auto temp=this->getTail();
-        while (temp!=nullptr){
-            temp=temp->prev;
-            delete(temp->next);
-        }
-        delete(this->getHead());
+        clear();
     }
 
     //remove all of the elements from your list
     void clear(){
-        auto tmp = this->getTail();
-        while (tmp->prev!=nullptr){
-            tmp=tmp->prev;
-            delete(tmp->next);
+        cleary(head);
+        head = nullptr;
+        tail = nullptr;
+       len=0;
+    }
+    void cleary(DoubleLinkedNode<T>* node) {
+        if (node == nullptr) {
+            return;
+        } else {
+            cleary(node->next);
+            delete node;
         }
-        delete(tmp);
     }
 
     //get a reference to the front element in the list
@@ -246,7 +248,7 @@ std::istream& operator>>(std::istream& in, DoublyLinkedList<T>& doublyLinkedList
     doublyLinkedList->setHead(new DoubleLinkedNode<T>*(first));
     DoubleLinkedNode<T>* temp=doublyLinkedList->head;
     in>>first;
-    while (first!=EOF){
+    while (!in.eof()){
         temp->next=&(new DoubleLinkedNode<T>*(first));
         temp->next->prev=temp;
         temp=temp->next;
