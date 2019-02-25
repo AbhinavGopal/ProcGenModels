@@ -14,6 +14,8 @@
 #include "ConstDoublyLinkedListIterator.h"
 #include "ConstReverseDoublyLinkedListIterator.h"
 
+
+
 template<typename T>
 class DoublyLinkedList {
 
@@ -28,51 +30,59 @@ public:
         DoublyLinkedList::tail = tail;
     }
 
-  using Node_Ptr = DoubleLinkedNode<T>*;
+    using Node_Ptr = DoubleLinkedNode<T>*;
 
-  using iterator =  DoublyLinkedListIterator<T>*;
-  using const_iterator =  ConstDoublyLinkedListIterator<T>*;
-  using reverse_iterator = ReverseDoublyLinkedListIterator<T>*;
-  using const_reverse_iterator = ConstReverseDoublyLinkedListIterator<T>*;
+    using iterator =  DoublyLinkedListIterator<T>;
+    using const_iterator =  ConstDoublyLinkedListIterator<T>;
+    using reverse_iterator = ReverseDoublyLinkedListIterator<T>;
+    using const_reverse_iterator = ConstReverseDoublyLinkedListIterator<T>;
 
-  //create a Doubly Linked List that has the same values
-  //as in the vector and in the same order
-  explicit DoublyLinkedList(const std::vector<T>& values){
-      int i=0;
-      Node_Ptr temp;//= nullptr;
-      for (const auto value : values){
-          if (head==nullptr){
-              temp=new DoubleLinkedNode<T>(value);
-              head=temp;
-              temp->prev=nullptr;
-              temp->next=nullptr;
-          }
-          else{
-              auto t1=new DoubleLinkedNode<T>(value);
-              tail=t1;
-              temp->next=tail;
-              tail->prev=temp;
-              temp=tail;
-              temp->next=nullptr;
-          }
-          i++;
-      }
-      len=i;
-  }
+    //create a Doubly Linked List that has the same values
+    //as in the vector and in the same order
+    explicit DoublyLinkedList(const std::vector<T>& values){
+        int i=0;
+        Node_Ptr temp;//= nullptr;
+        for (const auto value : values){
+            if (head==nullptr){
+                temp=new DoubleLinkedNode<T>(value);
+                head=temp;
+                temp->prev=nullptr;
+                temp->next=nullptr;
+            }
+            else{
+                auto t1=new DoubleLinkedNode<T>(value);
+                tail=t1;
+                temp->next=tail;
+                tail->prev=temp;
+                temp=tail;
+                temp->next=nullptr;
+            }
+            i++;
+        }
+        len=i;
+    }
 
-  //create an empty DoublyLinkedList
-  DoublyLinkedList(){
-      Node_Ptr temp=nullptr;
-      head=temp;
-      tail=temp;
-      len=0;
-  }
+    //create an empty DoublyLinkedList
+    DoublyLinkedList(){
+        Node_Ptr temp=nullptr;
+        head=temp;
+        tail=temp;
+        len=0;
+    }
 
-    const DoubleLinkedNode<T> *getHead() const {
+    DoubleLinkedNode<T> *getHead() {
         return head;
     }
 
-    const DoubleLinkedNode<T> *getTail() const {
+    DoubleLinkedNode<T> *getTail() {
+        return tail;
+    }
+
+    const DoubleLinkedNode<T> *constGetHead() const {
+        return head;
+    }
+
+    const DoubleLinkedNode<T> *constGetTail() const {
         return tail;
     }
 
@@ -89,129 +99,129 @@ public:
         delete(this->getHead());
     }
 
-  //remove all of the elements from your list
-  void clear(){
-      auto tmp = this->getTail();
-      while (tmp->prev!=nullptr){
-          tmp=tmp->prev;
-          delete(tmp->next);
-      }
-          delete(tmp);
-  }
+    //remove all of the elements from your list
+    void clear(){
+        auto tmp = this->getTail();
+        while (tmp->prev!=nullptr){
+            tmp=tmp->prev;
+            delete(tmp->next);
+        }
+        delete(tmp);
+    }
 
-  //get a reference to the front element in the list
-  const T& front() const{
-      return head->data;
-  }
-  T& front(){
-      return head->data;
-  }
+    //get a reference to the front element in the list
+    const T& front() const{
+        return head->data;
+    }
+    T& front(){
+        return head->data;
+    }
 
-  //get a reference to the last element in the list
-  const T& back() const{
-      return tail->data;
-  }
-  T& back(){
-      return tail->data;
-  }
+    //get a reference to the last element in the list
+    const T& back() const{
+        return tail->data;
+    }
+    T& back(){
+        return tail->data;
+    }
 
-  //add a value to the front of the list
-  void push_front(const T& value){
-      this->head->prev=new DoubleLinkedNode<T>(value);
-      this->head->prev->next=this->head;
-      this->head=this->head->prev;
-  }
+    //add a value to the front of the list
+    void push_front(const T& value){
+        this->head->prev=new DoubleLinkedNode<T>(value);
+        this->head->prev->next=this->head;
+        this->head=this->head->prev;
+    }
 
-  //add a value to the back of the list
-  void push_back(const T& value){
-      this->tail->next=new DoubleLinkedNode<T>(value);
-      this->tail->next->prev=this->tail;
-      this->tail=this->tail->next;
-  }
+    //add a value to the back of the list
+    void push_back(const T& value){
+        this->tail->next=new DoubleLinkedNode<T>(value);
+        this->tail->next->prev=this->tail;
+        this->tail=this->tail->next;
+    }
 
-  //is the list empty?
-  bool empty() const{
-      return (this->head==nullptr);
-  }
+    //is the list empty?
+    bool empty() const{
+        return (this->head==nullptr);
+    }
 
-  //return the number of elements in the list
-  int size() const{
-      int i=0;
-      auto temp=this->head;
-      while (temp!=nullptr){
-          i++;
-          temp=temp->next;
-      }
-      return i;
-  }
+    //return the number of elements in the list
+    int size() const{
+        int i=0;
+        auto temp=this->head;
+        while (temp!=nullptr){
+            i++;
+            temp=temp->next;
+        }
+        return i;
+    }
 
-  //return a constant bidirectional iterator to the front of the list
-  const_iterator begin() const{
-      return const_iterator(this->getHead());
-  }
-  const_iterator end() const{
-      return const_iterator(this->getTail());
-  }
+    //return a constant bidirectional iterator to the front of the list
+    const_iterator begin() const{
+        return const_iterator(this->constGetHead(), this);
+    }
+    const_iterator end() const{
+        return const_iterator(this->constGetTail(), this);
+    }
 
-  //return a nonconstant bidirectional iterator to the front of the list
-  iterator begin(){
-      return iterator(this->getHead());
-  }
-  iterator end(){
-      return iterator(this->getTail());
-  }
+    //return a nonconstant bidirectional iterator to the front of the list
+    iterator begin(){
+        return iterator(this->getHead(), this);
+    }
+    iterator end(){
+        return iterator(this->getTail(), this);
+    }
 
-  const_reverse_iterator crbegin() const{
-      return const_reverse_iterator(this->getTail());
-  }
-  const_reverse_iterator crend() const{
-      return const_reverse_iterator(this->getHead());
-  }
+    const_reverse_iterator crbegin() const{
+        return const_reverse_iterator(this->constGetTail(), this);
+    }
+    const_reverse_iterator crend() const{
+        return const_reverse_iterator(this->constGetHead(), this);
+    }
 
-  reverse_iterator rbegin(){
-      return reverse_iterator(this->getHead());
-  }
-  reverse_iterator rend(){
-      return reverse_iterator(this->getTail());
-  }
+    reverse_iterator rbegin(){
+        return reverse_iterator(this->getHead(), this);
+    }
+    reverse_iterator rend(){
+        return reverse_iterator(this->getTail(), this);
+    }
 
-  //insert the value at the position in the list
-  //I promise not to use the iterator again after the insertion is done
-  //An example if we had the list 1 <-> 9 <-> 17
-  //And the iterator was pointing to the 9 and we wanted to
-  //insert -22 the result would be
-  //1 <-> 22 <-> 9 <-> 17
-  void insert(iterator& position, const T& value){
-      auto toadd=new DoubleLinkedNode<T>(value);
-      auto tmp=position->pos;
-      tmp->next->prev=toadd;
-      tmp->next->prev->next=tmp->next;
-      tmp->next=toadd;
-      tmp->next->prev=tmp;
-  }
+    //insert the value at the position in the list
+    //I promise not to use the iterator again after the insertion is done
+    //An example if we had the list 1 <-> 9 <-> 17
+    //And the iterator was pointing to the 9 and we wanted to
+    //insert -22 the result would be
+    //1 <-> 22 <-> 9 <-> 17
+    void insert(iterator& position, const T& value){
+        auto toadd=new DoubleLinkedNode<T>(value);
+        auto tmp=position.pos;
+        tmp->next->prev=toadd;
+        tmp->next->prev->next=tmp->next;
+        tmp->next=toadd;
+        tmp->next->prev=tmp;
+    }
 
-  //remove the element at the position pointed to
-  //by the iterator.
-  //I promise not to use the iterator again after the erase is done
-  //An example if we had the list 1 <-> 9 <-> 17
-  //And when the wanted to erase the iterator was at the 9
-  //1 <-> 17
-  void erase(iterator& position){
-      int index=position->getSizeBefore();
-      auto tmp=this->getHead();
-      for (int i=0;i<index;i++){
-          tmp=tmp->next;
-      }
-      tmp->prev->next=tmp->next;
-      tmp->next->prev=tmp->prev;
-      delete(tmp);
-  }
+    //remove the element at the position pointed to
+    //by the iterator.
+    //I promise not to use the iterator again after the erase is done
+    //An example if we had the list 1 <-> 9 <-> 17
+    //And when the wanted to erase the iterator was at the 9
+    //1 <-> 17
+    void erase(iterator& position){
+        int index=position.getSizeBefore();
+        auto tmp=this->getHead();
+        for (int i=0;i<index;i++){
+            tmp=tmp->next;
+        }
+        tmp->prev->next=tmp->next;
+        tmp->next->prev=tmp->prev;
+        delete(tmp);
+    }
 
 
- private:
-  Node_Ptr head;
-  Node_Ptr tail;
-  int len;
+private:
+    Node_Ptr head;
+    Node_Ptr tail;
+    int len;
 };
 
 //write to the stream each element in the list in order

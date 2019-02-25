@@ -14,15 +14,19 @@ class ConstDoublyLinkedListIterator {
     //more members and methods
 
 public:
-    DoublyLinkedList<T> *nodelist;
-    DoubleLinkedNode<T> *pos;
+    const DoublyLinkedList<T> *nodelist;
+    const DoubleLinkedNode<T> *pos;
 
     ConstDoublyLinkedListIterator(const ConstDoublyLinkedListIterator &orig) {
-        this->pos = orig->pos;
-        this->nodelist = orig->nodelist;
+        this->pos = orig.pos;
+        this->nodelist = orig.nodelist;
     }
 
-    int getSizeBefore() {
+    ConstDoublyLinkedListIterator(const DoubleLinkedNode<T> *pos, const DoublyLinkedList<T> *list){
+        this->nodelist = list;
+        this->pos = pos;
+    }
+    int getSizeBefore()const  {
         int size = 0;
         auto tmp = this->pos->prev;
         while (tmp != nullptr) {
@@ -32,7 +36,7 @@ public:
         return size;
     }
 
-    int getSizeAfter() {
+    int getSizeAfter() const {
         int size = 0;
         auto tmp = this->pos->next;
         while (tmp != nullptr) {
@@ -47,27 +51,21 @@ public:
     //and (they are referring to the same element in the list
     //or they are out of bounds)
     bool operator==(const ConstDoublyLinkedListIterator<T> &rhs) const {
-        if (!((getSizeBefore() == rhs.getSizeBefore()) && getSizeAfter() == rhs.getSizeAfter())) {
-            return false;
-        }
-        if (*(this->pos->data) != *(rhs->pos->data)) {
-            return false;
-        }
-        auto tmp1 = this->getHead();
-        auto tmp2 = rhs->getHead();
-        while (tmp1 != nullptr) {
-            if (*(tmp1->data) != *(tmp2->data)) {
+            if (this->nodelist!= rhs.nodelist){
                 return false;
             }
-            tmp1 = tmp1->next;
-            tmp2 = tmp2->next;
-        }
-        return true;
+            else if (this->pos==nullptr && rhs.pos==nullptr){
+                return true;
+            }
+            else if (this->pos != rhs.pos){
+                return false;
+            }
+            return true;
     }
 
     //are the two iterators different?
     bool operator!=(const ConstDoublyLinkedListIterator<T> &rhs) const {
-        return (!(this == rhs));
+        return (!(*this == rhs));
     }
 
     //is the iterator safe to dereference?

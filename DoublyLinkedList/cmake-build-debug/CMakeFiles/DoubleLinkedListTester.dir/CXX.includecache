@@ -74,6 +74,12 @@ gtest/gtest.h
 DoublyLinkedList.h
 /Users/abhinav_gpyahoocom/Desktop/DoublyLinkedList/DoublyLinkedList.h
 
+/Users/abhinav_gpyahoocom/Desktop/DoublyLinkedList/main.cpp
+gtest/gtest.h
+/Users/abhinav_gpyahoocom/Desktop/DoublyLinkedList/gtest/gtest.h
+DoubleLinkedListTest.h
+/Users/abhinav_gpyahoocom/Desktop/DoublyLinkedList/DoubleLinkedListTest.h
+
 /Users/abhinav_gpyahoocom/googletest/googletest/include/gtest/gtest-death-test.h
 gtest/internal/gtest-death-test-internal.h
 /Users/abhinav_gpyahoocom/googletest/googletest/include/gtest/gtest/internal/gtest-death-test-internal.h

@@ -10,13 +10,13 @@
 
 template<typename T>
 class DoubleLinkedNode {
-    public:
-        T data;
-        DoubleLinkedNode<T>* next;
-        DoubleLinkedNode<T>* prev;
-        DoubleLinkedNode(const T& ndata);
+public:
+    T data;
+    DoubleLinkedNode<T>* next;
+    DoubleLinkedNode<T>* prev;
+    DoubleLinkedNode(const T& ndata);
 
-        };
+};
 template<typename T>
 DoubleLinkedNode<T>::DoubleLinkedNode(const T& ndata):data(ndata), next(nullptr), prev(nullptr){
 }

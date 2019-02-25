@@ -14,13 +14,18 @@ class ConstReverseDoublyLinkedListIterator {
     //you are free to add (and will likely need to add)
     //more members and methods
 public:
-    DoublyLinkedList<T> *nodelist;
-    DoubleLinkedNode<T> *pos;
+    const DoublyLinkedList<T> *nodelist;
+    const DoubleLinkedNode<T> *pos;
 
     //copy constructor
     ConstReverseDoublyLinkedListIterator(const ConstReverseDoublyLinkedListIterator &orig) {
-        this->nodelist = orig->nodelist;
-        this->pos = orig->pos;
+        this->nodelist = orig.nodelist;
+        this->pos = orig.pos;
+    }
+
+    ConstReverseDoublyLinkedListIterator(const DoubleLinkedNode<T> *pos, const DoublyLinkedList<T> *list){
+        this->nodelist = list;
+        this->pos = pos;
     }
 
     int getSizeBefore() {
@@ -47,33 +52,26 @@ public:
     //they are if they are over the same doubly linked list
     //and (they are referring to the same element in the list
     //or they are out of bounds)
-    bool operator==(const ConstReverseDoublyLinkedListIterator<T> &rhs) const {
-        if (!((getSizeBefore() == rhs.getSizeBefore()) && getSizeAfter() == rhs.getSizeAfter())) {
+    bool operator==(const ConstReverseDoublyLinkedListIterator<T>& rhs) const{
+        if (this->nodelist!= rhs.nodelist){
             return false;
         }
-        if (this->pos->data != rhs->pos->data) {
+        else if (this->pos==nullptr && rhs.pos==nullptr){
+            return true;
+        }
+        else if (this->pos != rhs.pos){
             return false;
         }
-        auto tmp1 = this->getHead();
-        auto tmp2 = rhs->getHead();
-        while (tmp1 != nullptr) {
-            if (tmp1->data != tmp2->data) {
-                return false;
-            }
-            tmp1 = tmp1->next;
-            tmp2 = tmp2->next;
-        }
-        return true;
-    }
+        return true;}
 
     //are the two iterators different?
     bool operator!=(ConstReverseDoublyLinkedListIterator<T> &rhs) const {
-        return (!(this == rhs));
+        return (!(*this == rhs));
     }
 
     //is the iterator safe to dereference?
     operator bool() const {
-        if (this->nodelist->getHead() == nullptr) {
+        if (this->nodelist->constGetHead() == nullptr) {
             return false;
         }
         return true;
@@ -96,16 +94,16 @@ public:
         pos = pos->next;
         return *this;
     } //pre
-        const ConstReverseDoublyLinkedListIterator<T> operator--(int) {
-            auto copy(*this);
-            --(*this);
-            return copy;
-        }//post
+    const ConstReverseDoublyLinkedListIterator<T> operator--(int) {
+        auto copy(*this);
+        --(*this);
+        return copy;
+    }//post
 
-        //get a const reference to the value
-        const T &operator*() const {
-            return this->pos->data;
-        }
+    //get a const reference to the value
+    const T &operator*() const {
+        return this->pos->data;
+    }
 
 
 };
