@@ -41,22 +41,23 @@ public:
     //create a Doubly Linked List that has the same values
     //as in the vector and in the same order
     explicit DoublyLinkedList(const std::vector<T>& values){
+        head=nullptr;
         int i=0;
         Node_Ptr temp;//= nullptr;
         for (const auto value : values){
             if (head==nullptr){
-                temp=new DoubleLinkedNode<T>(value);
-                head=temp;
-                temp->prev=nullptr;
-                temp->next=nullptr;
+                head=new DoubleLinkedNode<T>(value);
+                head->prev=nullptr;
+                head->next=nullptr;
+                temp=head;
             }
             else{
-                auto t1=new DoubleLinkedNode<T>(value);
-                tail=t1;
+                tail=new DoubleLinkedNode<T>(value);
                 temp->next=tail;
                 tail->prev=temp;
+                tail->next=nullptr;
                 temp=tail;
-                temp->next=nullptr;
+
             }
             i++;
         }
@@ -129,16 +130,31 @@ public:
 
     //add a value to the front of the list
     void push_front(const T& value){
-        this->head->prev=new DoubleLinkedNode<T>(value);
-        this->head->prev->next=this->head;
-        this->head=this->head->prev;
+        if (this->head==nullptr){
+            head=new DoubleLinkedNode<T>(value);
+            head->prev=nullptr;
+            head->next=nullptr;
+            tail=head;
+        }
+        else{
+        head->prev=new DoubleLinkedNode<T>(value);
+        head->prev->next=head;
+        head=head->prev;}
     }
 
     //add a value to the back of the list
     void push_back(const T& value){
-        this->tail->next=new DoubleLinkedNode<T>(value);
-        this->tail->next->prev=this->tail;
-        this->tail=this->tail->next;
+        if (head==nullptr){
+            head=new DoubleLinkedNode<T>(value);
+            head->prev=nullptr;
+            head->next=nullptr;
+            tail=head;
+        }
+        else {
+            this->tail->next = new DoubleLinkedNode<T>(value);
+            this->tail->next->prev = this->tail;
+            this->tail = this->tail->next;
+        }
     }
 
     //is the list empty?
@@ -196,10 +212,19 @@ public:
     void insert(iterator& position, const T& value){
         auto toadd=new DoubleLinkedNode<T>(value);
         auto tmp=position.pos;
-        tmp->next->prev=toadd;
-        tmp->next->prev->next=tmp->next;
-        tmp->next=toadd;
-        tmp->next->prev=tmp;
+        if (tmp==head && tmp==nullptr){
+            head=toadd;
+        }
+        else if (tmp==head){
+            tmp->prev=toadd;
+            toadd->next=tmp;
+            head=toadd;
+        }
+        else {
+            toadd->prev=tmp->prev;
+            tmp->prev = toadd;
+            tmp->prev->next = tmp;
+        }
     }
 
     //remove the element at the position pointed to
@@ -214,9 +239,23 @@ public:
         for (int i=0;i<index;i++){
             tmp=tmp->next;
         }
-        tmp->prev->next=tmp->next;
-        tmp->next->prev=tmp->prev;
-        delete(tmp);
+        if (index==0){
+            head=tmp->next;
+            if (head!=nullptr) {
+                head->prev = nullptr;
+            }
+            delete(tmp);
+        }
+        else if (tmp==tail){
+            tail=tmp->prev;
+            tail->next=nullptr;
+            delete(tmp);
+        }
+        else {
+            tmp->prev->next = tmp->next;
+            tmp->next->prev = tmp->prev;
+            delete (tmp);
+        }
     }
 
 
