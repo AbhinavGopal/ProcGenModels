@@ -184,7 +184,7 @@ public:
     }
 
     reverse_iterator rbegin(){
-        return reverse_iterator(this->getHead(), this);
+        return reverse_iterator(this->getTail(), this);
     }
     reverse_iterator rend(){
         return reverse_iterator(nullptr, this);

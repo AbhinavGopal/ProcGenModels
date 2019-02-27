@@ -92,19 +92,6 @@ public:
         return copy;
 
     }//post
-    ReverseDoublyLinkedListIterator<T>& operator+=(int rhs){
-        for (int i = 0; i < rhs; ++i) {
-            pos=pos->prev;
-            return *this;
-        }
-    }
-
-    ReverseDoublyLinkedListIterator<T>& operator-=(int rhs){
-        for (int i = 0; i < rhs; ++i) {
-            pos=pos->next;
-            return *this;
-        }
-    }
     //go to the previous element
     ReverseDoublyLinkedListIterator<T>& operator--(){
         pos=pos->next;
