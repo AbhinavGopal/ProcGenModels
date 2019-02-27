@@ -74,7 +74,7 @@ public:
 
     //is the iterator safe to dereference?
     operator bool() const{
-        if (this->nodelist->getHead()==nullptr){
+        if (this->pos==nullptr){
             return false;
         }
         return true;
