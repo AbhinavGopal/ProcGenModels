@@ -44,24 +44,11 @@ public:
         head=nullptr;
         int i=0;
         Node_Ptr temp;//= nullptr;
-        for (const auto value : values){
-            if (head==nullptr){
-                head=new DoubleLinkedNode<T>(value);
-                head->prev=nullptr;
-                head->next=nullptr;
-                temp=head;
-            }
-            else{
-                tail=new DoubleLinkedNode<T>(value);
-                temp->next=tail;
-                tail->prev=temp;
-                tail->next=nullptr;
-                temp=tail;
-
-            }
+        for (const auto &value : values){
+            push_back(value);
             i++;
+            len=i;
         }
-        len=i;
     }
 
     //create an empty DoublyLinkedList
@@ -178,7 +165,7 @@ public:
         return const_iterator(this->constGetHead(), this);
     }
     const_iterator end() const{
-        return const_iterator(this->constGetTail(), this);
+        return const_iterator(nullptr, this);
     }
 
     //return a nonconstant bidirectional iterator to the front of the list
@@ -186,21 +173,21 @@ public:
         return iterator(this->getHead(), this);
     }
     iterator end(){
-        return iterator(this->getTail(), this);
+        return iterator(nullptr, this);
     }
 
     const_reverse_iterator crbegin() const{
         return const_reverse_iterator(this->constGetTail(), this);
     }
     const_reverse_iterator crend() const{
-        return const_reverse_iterator(this->constGetHead(), this);
+        return const_reverse_iterator(nullptr, this);
     }
 
     reverse_iterator rbegin(){
         return reverse_iterator(this->getHead(), this);
     }
     reverse_iterator rend(){
-        return reverse_iterator(this->getTail(), this);
+        return reverse_iterator(nullptr, this);
     }
 
     //insert the value at the position in the list
@@ -212,8 +199,9 @@ public:
     void insert(iterator& position, const T& value){
         auto toadd=new DoubleLinkedNode<T>(value);
         auto tmp=position.pos;
-        if (tmp==head && tmp==nullptr){
+        if (tmp==nullptr&&head==nullptr){
             head=toadd;
+            tail=toadd;
         }
         else if (tmp==head){
             tmp->prev=toadd;
@@ -222,9 +210,12 @@ public:
         }
         else {
             toadd->prev=tmp->prev;
-            tmp->prev = toadd;
-            tmp->prev->next = tmp;
+            toadd->next=tmp;
+            toadd->prev->next=toadd;
+            tmp->prev=toadd;
         }
+        len+=1;
+
     }
 
     //remove the element at the position pointed to
@@ -234,16 +225,24 @@ public:
     //And when the wanted to erase the iterator was at the 9
     //1 <-> 17
     void erase(iterator& position){
-        int index=position.getSizeBefore();
-        auto tmp=this->getHead();
-        for (int i=0;i<index;i++){
+        Node_Ptr i= position.pos;
+        auto tmp=head;
+        while (tmp!=i){
             tmp=tmp->next;
         }
-        if (index==0){
+        if (tmp!=head && tmp!=tail) {
+            tmp->prev->next = tmp->next;
+            tmp->next->prev = tmp->prev;
+            delete(tmp);
+        }
+        else if (tmp==head&& tmp==tail){
+            head=nullptr;
+            tail=nullptr;
+            delete(tmp);
+        }
+        else if (tmp==head){
             head=tmp->next;
-            if (head!=nullptr) {
-                head->prev = nullptr;
-            }
+            head->prev=nullptr;
             delete(tmp);
         }
         else if (tmp==tail){
@@ -251,11 +250,7 @@ public:
             tail->next=nullptr;
             delete(tmp);
         }
-        else {
-            tmp->prev->next = tmp->next;
-            tmp->next->prev = tmp->prev;
-            delete (tmp);
-        }
+
     }
 
 
