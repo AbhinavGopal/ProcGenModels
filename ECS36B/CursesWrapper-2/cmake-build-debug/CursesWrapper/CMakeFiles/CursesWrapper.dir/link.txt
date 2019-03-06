@@ -1,0 +1,2 @@
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar qc libCursesWrapper.a  CMakeFiles/CursesWrapper.dir/RowReference.cpp.o CMakeFiles/CursesWrapper.dir/WindowImplementation.cpp.o CMakeFiles/CursesWrapper.dir/CellReference.cpp.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib libCursesWrapper.a
