@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/c/Users/Anirudh/Downloads/Final/BattleShip/MVC/Board.cpp
+Board.h
+/cygdrive/c/Users/Anirudh/Downloads/Final/BattleShip/MVC/Board.h
+
+/cygdrive/c/Users/Anirudh/Downloads/Final/BattleShip/MVC/Board.h
+string
+-
+vector
+-
+ShipPlacement.h
+/cygdrive/c/Users/Anirudh/Downloads/Final/BattleShip/MVC/ShipPlacement.h
+Cell.h
+/cygdrive/c/Users/Anirudh/Downloads/Final/BattleShip/MVC/Cell.h
+
+/cygdrive/c/Users/Anirudh/Downloads/Final/BattleShip/MVC/Cell.cpp
+stdexcept
+-
+Cell.h
+/cygdrive/c/Users/Anirudh/Downloads/Final/BattleShip/MVC/Cell.h
+
+/cygdrive/c/Users/Anirudh/Downloads/Final/BattleShip/MVC/Cell.h
+
+/cygdrive/c/Users/Anirudh/Downloads/Final/BattleShip/MVC/ShipPlacement.h
+
