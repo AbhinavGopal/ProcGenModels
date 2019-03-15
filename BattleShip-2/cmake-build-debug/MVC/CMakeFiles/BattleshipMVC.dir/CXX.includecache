@@ -46,10 +46,6 @@ Model.h
 View.h
 /Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/View.h
 
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/Player.cpp
-Player.h
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/Player.h
-
 /Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/Player.h
 functional
 -
@@ -73,6 +69,38 @@ AttackResult.h
 /Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/PlayerConfiguration.h
 
 /Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/ShipPlacement.h
+
+/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/StandardView.cpp
+algorithm
+-
+vector
+-
+cctype
+-
+StandardView.h
+/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/StandardView.h
+Utility.h
+/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/Utility.h
+
+/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/StandardView.h
+iostream
+-
+utility
+-
+PlayerConfiguration.h
+/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/PlayerConfiguration.h
+View.h
+/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/View.h
+
+/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/Utility.h
+algorithm
+-
+iostream
+-
+stdexcept
+-
+random
+-
 
 /Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/View.h
 unordered_map

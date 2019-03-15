@@ -5,4 +5,3 @@
 #include "RandomAI.h"
 #include "Attack.h"
 #include "Utility.h"
-

@@ -30,4 +30,13 @@ const int BattleShip::Player::getId() const {
     return id;
 }
 
-
+bool BattleShip::Player::operator==(const BattleShip::Player &rhs) const {
+    if (name==rhs.name && id==rhs.id && shipHealths==rhs.shipHealths){
+        if (opponent==rhs.opponent){
+            if (board.getHiddenVersion()==rhs.board.getHiddenVersion() && board.getVisibleVersion()==rhs.board.getVisibleVersion()){
+                return true;
+            }
+        }
+    }
+return false;
+}

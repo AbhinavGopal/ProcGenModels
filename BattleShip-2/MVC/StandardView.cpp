@@ -119,3 +119,10 @@ int BattleShip::StandardView::getAiChoice() {
     return choice;
 }
 
+void BattleShip::StandardView::clearInput() {
+    char ch=' ';
+    while (ch=='\n' || ch==' '){
+        in>>ch;
+    }
+
+}
