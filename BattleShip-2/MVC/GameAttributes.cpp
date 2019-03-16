@@ -25,6 +25,16 @@ BattleShip::GameAttributes::GameAttributes(int numRows, int numCols) {
     shipAttributes.insert({'P', 2});
 }
 
+BattleShip::GameAttributes::GameAttributes(std::istream& in) {
+    in >> this->numRows;
+    in >> this->numCols;
+    shipAttributes.insert({'C', 5});
+    shipAttributes.insert({'B', 4});
+    shipAttributes.insert({'D', 3});
+    shipAttributes.insert({'S', 3});
+    shipAttributes.insert({'P', 2});
+}
+
 int BattleShip::GameAttributes::getNumRows() const {
     return numRows;
 }

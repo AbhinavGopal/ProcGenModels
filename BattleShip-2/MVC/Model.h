@@ -37,6 +37,7 @@ class Model {
   Player& getWinner();
 
   void SetOpponents();
+
  protected:
   GameAttributes gameAttributes;
   std::vector<std::unique_ptr<Player>> players;

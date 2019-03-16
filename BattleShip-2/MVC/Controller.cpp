@@ -20,8 +20,44 @@ BattleShip::Controller::Controller(): hasBeenSetUp(false) {
 }
 
 void BattleShip::Controller::setupGame(const std::string &GameConfigurationFile, int seed) {
-    view->getPlayerConfiguration();
+    BattleShip::PlayerConfiguration config = view->getPlayerConfiguration();
+    model.loadGameConfigurationFromFile(GameConfigurationFile);
 
+    if (config.numHumanPlayers > 0) {
+        for (int i = 0; i < config.numHumanPlayers; i++) {
+            view->getPlayerName(i+1);
+            model.addPlayer<HumanPlayer>(*view);
+            //for each ship getShipPlacement, then checkShipPlacement
 
+        }
+    }
+    else if (config.numAiPlayers > 0) {
+        for (int i = 0; i < config.numAiPlayers; i++) {
+            int choice = view->getAiChoice();
+            switch (choice) {
+                case 1:
+                    model.addPlayer<CheatingAI>(*view);
+                    break;
+                case 2:
+                    model.addPlayer<RandomAI>(*view);
+                    break;
+                case 3:
+                    model.addPlayer<HuntDestroyAI>(*view);
+                    break;
+                default:
+                    exit(2);
+            }
+        }
+        AiPlayer::seed_random_number_generator(seed);
+    }
 
+    BattleShip::Model model= BattleShip::Model();
+    else {
+
+    }
+}
+
+void BattleShip::Controller::setupGame() {
+   BattleShip::Model model= BattleShip::Model();
+   hasBeenSetUp=true;
 }

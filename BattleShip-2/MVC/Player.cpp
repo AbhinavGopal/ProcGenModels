@@ -38,5 +38,48 @@ bool BattleShip::Player::operator==(const BattleShip::Player &rhs) const {
             }
         }
     }
-return false;
+    return false;
+}
+
+bool BattleShip::Player::operator!=(const BattleShip::Player &rhs) const {
+    return !((*this) == rhs);
+}
+
+
+bool BattleShip::Player::allShipsSunk() const {
+    for (std::pair<char,int> ship: shipHealths) {
+        if (ship.second != 0) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+BattleShip::AttackResult BattleShip::Player::fireAt(int row, int col) {
+    if (opponent->board.at(row,col).containsShip()){
+        if (opponent->shipHealths[opponent->board.at(row,col).getContents()]==1){
+            return AttackResult(true, true, opponent->board.at(row,col).getContents());
+        }
+        else {
+            return AttackResult(true, false, opponent->board.at(row, col).getContents());
+        }
+    }
+    return AttackResult(false, false, opponent->board.at(row,col).getContents());
+}
+
+BattleShip::Player &BattleShip::Player::getOpponent() {
+    return *opponent;
+}
+
+const BattleShip::Player &BattleShip::Player::getOpponent() const {
+    return *opponent;
+}
+
+void BattleShip::Player::setOpponent(BattleShip::Player &opponent) {
+    this->opponent=&(opponent);
+}
+
+bool BattleShip::Player::hit(char shipChar) {
+
 }
