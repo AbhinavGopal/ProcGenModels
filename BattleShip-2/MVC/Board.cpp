@@ -5,6 +5,8 @@
 #include "Board.h"
 
 BattleShip::Board::Board(int numRows, int numCols, char blankChar) : blankChar (blankChar) {
+    std::vector<std::vector<Cell>> boardState;
+    boardState.resize(numRows,std::vector<Cell>(numCols));
     for (int i = 0; i < numRows; i++) {
         for (int j = 0; j < numCols; j++) {
             boardState[i].push_back(Cell(blankChar));
@@ -13,6 +15,8 @@ BattleShip::Board::Board(int numRows, int numCols, char blankChar) : blankChar (
 }
 
 BattleShip::Board::Board(int numRows, int numCols) : blankChar ('*') {
+    std::vector<std::vector<Cell>> boardState;
+    boardState.resize(numRows,std::vector<Cell>(numCols));
     for (int i = 0; i < numRows; i++) {
         for (int j = 0; j < numCols; j++) {
             boardState[i].push_back(Cell(blankChar));

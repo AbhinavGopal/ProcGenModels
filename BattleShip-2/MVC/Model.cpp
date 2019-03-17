@@ -28,10 +28,8 @@ const BattleShip::Player& BattleShip::Model::getDefendingPlayer() const {
 }
 
 void BattleShip::Model::loadGameConfigurationFromFile(const std::string &gameConfigurationFile) {
-    std::ifstream in;
-    in.open(gameConfigurationFile);
-    this->gameAttributes = GameAttributes(in);
-    in.close();
+    std::ifstream file(gameConfigurationFile);
+    this->gameAttributes = GameAttributes(file);
 }
 
 bool BattleShip::Model::isGameOver() const {
