@@ -42,7 +42,6 @@ class Player {
   Player& getOpponent();
   const Player& getOpponent() const;
   void setOpponent(Player& opponent);
-  virtual ~Player();
  protected:
   virtual bool hit(char shipChar);
   static int num_instances;

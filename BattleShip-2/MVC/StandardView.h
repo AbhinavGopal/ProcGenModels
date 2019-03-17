@@ -31,7 +31,6 @@ class StandardView : public View{
   void printBoardAsObscured(const Board& board);
  public:
   virtual int getAiChoice() override;
-  virtual ~StandardView();
  protected:
 
   void clearInput();

@@ -11,7 +11,6 @@ class CheatingAI  : public AiPlayer{
  public:
   CheatingAI(const GameAttributes& gameAttributes, View& view);
   virtual std::unique_ptr<Move> getMove() override;
-  virtual ~CheatingAI();
 
 };
 }

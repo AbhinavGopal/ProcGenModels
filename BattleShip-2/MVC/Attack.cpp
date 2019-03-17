@@ -9,8 +9,10 @@ BattleShip::Attack::Attack(BattleShip::Player &attacker, int row, int col): Batt
 }
 
 void BattleShip::Attack::enact(BattleShip::Model &model, BattleShip::View &view) {
-//    AttackResult attack= moveMaker.fireAt(row, col);
-
+    AttackResult result = moveMaker.fireAt(row, col);
+    view.showPlayersBoard(moveMaker);
+    view.showPlacementBoard(moveMaker);
+    view.showResultOfAttack(moveMaker, result);
 }
 
 const int BattleShip::Attack::getRow() const {

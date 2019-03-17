@@ -27,8 +27,12 @@ void BattleShip::Controller::setupGame(const std::string &GameConfigurationFile,
         for (int i = 0; i < config.numHumanPlayers; i++) {
             view->getPlayerName(i+1);
             model.addPlayer<HumanPlayer>(*view);
-            //for each ship getShipPlacement, then checkShipPlacement
-
+            if(i == 0) {
+                model.getAttackingPlayer().placeShips();
+            }
+            else {
+                model.getDefendingPlayer().placeShips();
+            }
         }
     }
     else if (config.numAiPlayers > 0) {
@@ -51,17 +55,16 @@ void BattleShip::Controller::setupGame(const std::string &GameConfigurationFile,
         AiPlayer::seed_random_number_generator(seed);
     }
 
-    BattleShip::Model model= BattleShip::Model();
-
 }
 
 void BattleShip::Controller::setupGame() {
-   BattleShip::Model model= BattleShip::Model();
    hasBeenSetUp=true;
 }
 
 void BattleShip::Controller::playGame() {
     while (!model.isGameOver()){
-
+        std::unique_ptr<BattleShip::Move> attack = model.getAttackingPlayer().getMove();
+        attack->enact(model, *view);
+        model.changeTurn();
     }
 }

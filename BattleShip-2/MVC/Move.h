@@ -20,7 +20,6 @@ class Move {
   Move(Player& moveMaker);
   virtual void enact(Model& model, View& view) = 0;
   virtual bool isValid() const = 0;
-  virtual ~Move();
 
  protected:
   Player& moveMaker;

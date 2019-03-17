@@ -16,7 +16,6 @@ class HumanPlayer : public Player {
   virtual std::unique_ptr<BattleShip::Move> getMove() override;
   virtual void placeShips() override;
   virtual void initializeName() override;
-  virtual ~HumanPlayer();
  protected:
 };
 }

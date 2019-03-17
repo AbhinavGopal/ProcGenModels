@@ -8,7 +8,7 @@ int main(int argc, char** argv) {
   BattleShip::Controller control= BattleShip::Controller();
 
   if (argc>1){
-    control.setupGame(argv[1], int(argv[2]));
+    control.setupGame(argv[1], atoi(argv[2]));
   }
   else {
     control.setupGame(argv[1]);

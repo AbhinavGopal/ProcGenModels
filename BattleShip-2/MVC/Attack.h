@@ -14,7 +14,6 @@ class Attack : public Move {
   virtual bool isValid() const override;
   const int getRow() const;
   const int getCol() const;
-  virtual ~Attack();
  protected:
   const int row, col;
 
