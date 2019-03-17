@@ -47,39 +47,53 @@ int BattleShip::Board::getNumCols() const {
 
 std::vector<std::string> BattleShip::Board::getHiddenVersion() const{
     std::string str = "";
-    std::vector<std::string> vec(getNumRows());
-    int i=0;
-    int j;
-    while (i < getNumRows()) {
-        j=0;
-        while (j < getNumCols()) {
+    std::vector<std::string> vec (getNumRows() + 1);
+    str += "  ";
+    for (int i = 0; i < getNumCols(); i++) {
+        str += std::to_string(i);
+        str += " ";
+    }
+    vec[0] = str;
+    str = "";
+    for (int i = 0; i < getNumRows(); i++) {
+        str += std::to_string(i);
+        str += " ";
+        for (int j = 0; j < getNumCols(); j++) {
             str += boardState[i][j].getContentsIfHidden();
             str += " ";
-            j++;
         }
-        vec[i] = str;
+        vec[i + 1] = str;
         str = "";
-        i++;
     }
     return vec;
 }
 
 std::vector<std::string> BattleShip::Board::getVisibleVersion() const{
     std::string str = "";
-    std::vector<std::string> vec (getNumRows());
+    std::vector<std::string> vec (getNumRows() + 1);
+    str += "  ";
+    for (int i = 0; i < getNumCols(); i++) {
+        str += std::to_string(i);
+        str += " ";
+    }
+    vec[0] = str;
+    str = "";
     for (int i = 0; i < getNumRows(); i++) {
+        str += std::to_string(i);
+        str += " ";
         for (int j = 0; j < getNumCols(); j++) {
             str += boardState[i][j].getContentsIfVisible();
             str += " ";
         }
-        vec[i] = str;
+        vec[i + 1] = str;
         str = "";
     }
     return vec;
 }
 
 bool BattleShip::Board::inBounds(int row, int col) const {
-    return !(row < 0 || col < 0 || row >= getNumRows() || col >= getNumCols());
+    bool a = !(row < 0 || col < 0 || row >= getNumRows() || col >= getNumCols());
+    return a;
 }
 
 BattleShip::Cell& BattleShip::Board::at(int i, int j) {
@@ -92,7 +106,7 @@ const BattleShip::Cell& BattleShip::Board::at(int i, int j) const {
 
 bool BattleShip::Board::inBounds(const ShipPlacement& shipPlacement) const {
     for (int i = shipPlacement.rowStart; i <= shipPlacement.rowEnd; i++) {
-        for (int j = shipPlacement.colStart; j <= shipPlacement.colEnd; i++) {
+        for (int j = shipPlacement.colStart; j <= shipPlacement.colEnd; j++) {
             if (!inBounds(i, j)) {
                 return false;
             }

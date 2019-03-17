@@ -16,7 +16,7 @@ int main(int argc, char** argv) {
     std::cout<<ch;
     control.setupGame(std::string(ch));
   }
-//  control.playGame();
+  control.playGame();
 
   return 0;
 }

@@ -6,10 +6,10 @@
 #include "Cell.h"
 
 BattleShip::Cell::Cell(char contents, const char hiddenMarker, const char hitMarker, const char missMarker) :
-contents (contents), hiddenMarker (hiddenMarker),  hitMarker (hitMarker), missMarker (missMarker){};
+contents (contents), firedAt (false), hiddenMarker (hiddenMarker),  hitMarker (hitMarker), missMarker (missMarker){};
 
 BattleShip::Cell::Cell(char contents) :
-        contents (contents), hiddenMarker ('*'),  hitMarker ('X'), missMarker ('O'){};
+        contents (contents), firedAt (false), hiddenMarker ('*'),  hitMarker ('X'), missMarker ('O'){};
 
 char BattleShip::Cell::getContents() const {
     return contents;
@@ -34,7 +34,17 @@ char BattleShip::Cell::getContentsIfHidden() const {
 }
 
 char BattleShip::Cell::getContentsIfVisible() const {
-    return contents;
+    if (firedAt) {
+        if (containsShip()) {
+            return hitMarker;
+        }
+        else {
+            return missMarker;
+        }
+    }
+    else {
+        return contents;
+    }
 }
 
 bool BattleShip::Cell::HasBeenFiredAt() const {

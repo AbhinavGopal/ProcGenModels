@@ -28,11 +28,10 @@ void BattleShip::HumanPlayer::placeShips() {
         ShipPlacement placement = view.getShipPlacement(*this, itr->first, itr->second);
         if (getBoard().canPlaceShipAt(placement)) {
             getBoard().AddShip(itr->first, placement);
-            view.updateShipPlacementView(*this);
-            view.showPlacementBoard(*this);
             itr++;
         }
     }
+    view.updateShipPlacementView(*this);
 
 }
 

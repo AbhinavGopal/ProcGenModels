@@ -31,11 +31,16 @@ BattleShip::GameAttributes::GameAttributes(std::istream& in) {
     shipAttributes=std::map<char, int>();
     in >> this->numRows;
     in >> this->numCols;
-    shipAttributes.emplace(std::pair<char,int>('C', 5));
-    shipAttributes.insert(std::pair<char,int>('B', 4));
-    shipAttributes.insert(std::pair<char,int>('D', 3));
-    shipAttributes.insert(std::pair<char,int>('S', 3));
-    shipAttributes.insert(std::pair<char,int>('P', 2));
+    int numShips;
+    in>>numShips;
+    shipAttributes.insert(std::pair<char,int>('C', 5));
+    char ch= ' ';
+    int len;
+    for (int i=0;i<numShips;i++){
+        in>>ch;
+        in>>len;
+        shipAttributes.insert(std::pair<char,int>(ch,len));
+    }
 }
 
 int BattleShip::GameAttributes::getNumRows() const {

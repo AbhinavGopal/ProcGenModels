@@ -59,7 +59,7 @@ bool BattleShip::Player::allShipsSunk() const {
 BattleShip::AttackResult BattleShip::Player::fireAt(int row, int col) {
     opponent->board.at(row,col).setHasBeenFiredAt(true);
     if (opponent->board.at(row,col).containsShip()){
-        opponent->board.at(row, col).setContents('X');
+        //opponent->board.at(row, col).setContents('X');
         opponent->shipHealths[opponent->board.at(row,col).getContents()]-=1;
         if (opponent->shipHealths[opponent->board.at(row,col).getContents()]==0){
             return AttackResult(true, true, opponent->board.at(row,col).getContents());
@@ -68,7 +68,6 @@ BattleShip::AttackResult BattleShip::Player::fireAt(int row, int col) {
             return AttackResult(true, false, opponent->board.at(row, col).getContents());
         }
     }
-    opponent->board.at(row, col).setContents('O');
     return AttackResult(false, false, opponent->board.at(row,col).getContents());
 }
 

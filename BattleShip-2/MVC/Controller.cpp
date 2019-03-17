@@ -5,6 +5,7 @@
 #include <stdexcept>
 #include <vector>
 #include <sstream>
+#include<stdio.h>
 #include "PlayerConfiguration.h"
 #include "Controller.h"
 #include "HumanPlayer.h"
@@ -27,15 +28,9 @@ void BattleShip::Controller::setupGame(const std::string &GameConfigurationFile,
         for (int i = 0; i < config.numHumanPlayers; i++) {
             view->getPlayerName(i+1);
             model.addPlayer<HumanPlayer>(*view);
-            if(i == 0) {
-                model.getAttackingPlayer().placeShips();
-            }
-            else {
-                model.getDefendingPlayer().placeShips();
-            }
         }
     }
-    else if (config.numAiPlayers > 0) {
+    if (config.numAiPlayers > 0) {
         for (int i = 0; i < config.numAiPlayers; i++) {
             int choice = view->getAiChoice();
             switch (choice) {
@@ -68,7 +63,7 @@ void BattleShip::Controller::setupGame(const std::string &GameConfigurationFile)
             model.addPlayer<HumanPlayer>(*view);
         }
     }
-    else if (config.numAiPlayers > 0) {
+    if (config.numAiPlayers > 0) {
         for (int i = 0; i < config.numAiPlayers; i++) {
             int choice = view->getAiChoice();
             switch (choice) {
@@ -100,4 +95,5 @@ void BattleShip::Controller::playGame() {
         attack->enact(model, *view);
         model.changeTurn();
     }
+    view->showWinner(model.getDefendingPlayer());
 }

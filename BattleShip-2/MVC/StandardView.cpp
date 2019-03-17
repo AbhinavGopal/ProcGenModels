@@ -15,7 +15,7 @@ BattleShip::StandardView::StandardView(std::istream &in, std::ostream &out): in(
 }
 
 BattleShip::PlayerConfiguration BattleShip::StandardView::getPlayerConfiguration() {
-    std::cout << "What type of game do you want to play?\n1. Human vs Human\n2. Human vs AI\n3. AI vs AI\nYour choice: ";
+    std::cout << "What type of game do you want to play?\n1. Human vs Human\n2. Human vs AI\n3. AI vs AI\nYour choice:\n";
     int answer;
     std::cin>>answer;
     switch (answer) {
@@ -34,7 +34,7 @@ BattleShip::PlayerConfiguration BattleShip::StandardView::getPlayerConfiguration
 }
 
 std::string BattleShip::StandardView::getPlayerName(int i) {
-    out <<"Player "<< i << " Please enter your name: ";
+    out <<"Player "<< i << " Please enter your name:\n";
     std::string name;
     in>>name;
 
@@ -46,22 +46,22 @@ ShipPlacement BattleShip::StandardView::getShipPlacement(const BattleShip::Playe
     for (std::string s : vec) {
         out<<s<<std::endl;
     }
-    out<< player.getName()<<" do you want to place "<<shipChar<<" horizontally or vertically?\nEnter h for horizontal or v for vertical\nYour choice:";
+    out<< player.getName()<<" do you want to place "<<shipChar<<" horizontally or vertically?\nEnter h for horizontal or v for vertical\nYour choice:\n";
     char direction;
     int rowStart;
     int colStart;
     in>>direction;
-    out << player.getName() << " enter the row and column you want to place "<<shipChar<< " which is "<< shipLen<<" long, at with a space in between row and col: ";
+    out << player.getName() << " enter the row and column you want to place "<<shipChar<< " which is "<< shipLen<<" long, at with a space in between row and col:\n";
     in>>rowStart;
     in>>colStart;
     int rowEnd;
     int colEnd;
     if (direction=='h'){
         rowEnd=rowStart;
-        colEnd=colStart+shipLen;
+        colEnd=colStart+shipLen - 1;
     }
     else{
-        rowEnd=rowStart+shipLen;
+        rowEnd=rowStart+shipLen - 1;
         colEnd=colStart;
     }
     return ShipPlacement(rowStart, colStart, rowEnd, colEnd);
@@ -73,7 +73,7 @@ void BattleShip::StandardView::updateShipPlacementView(const BattleShip::Player&
 
 std::pair<int, int> BattleShip::StandardView::getFiringCoordinate(const BattleShip::Player& attacker) {
     std::pair<int, int> coords;
-    out << attacker.getName() << " enter the row and column you want to place B, which is 4 long, at with a space in between row and col: ";
+    out << attacker.getName() << ", where would you like to fire?\n";
     in >> coords.first >> coords.second;
     return coords;
 }
@@ -119,7 +119,7 @@ void BattleShip::StandardView::showPlacementBoard(const BattleShip::Player &play
 }
 
 int BattleShip::StandardView::getAiChoice() {
-    out << "What AI do you want?\n1. Cheating AI\n2. Random AI\n3. Hunt Destroy AI\nYour choice: ";
+    out << "What AI do you want?\n1. Cheating AI\n2. Random AI\n3. Hunt Destroy AI\nYour choice:\n";
     int choice;
     in >> choice;
     return choice;
