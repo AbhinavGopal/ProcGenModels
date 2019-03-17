@@ -28,6 +28,7 @@ class View {
   virtual void showPlayersBoard(const Player& player) = 0;
   virtual void showPlacementBoard(const Player& player) = 0;
   virtual int getAiChoice() = 0;
+  virtual ~View();
 };
 }
 #endif //BATTLESHIP_VIEW_H

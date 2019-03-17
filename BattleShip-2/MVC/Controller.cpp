@@ -16,7 +16,7 @@
 
 BattleShip::Controller::Controller(): hasBeenSetUp(false) {
     model=Model();
-    std::unique_ptr<StandardView> view = std::make_unique<BattleShip::StandardView>();
+    view = std::make_unique<BattleShip::StandardView>();
 }
 
 void BattleShip::Controller::setupGame(const std::string &GameConfigurationFile, int seed) {
@@ -53,6 +53,43 @@ void BattleShip::Controller::setupGame(const std::string &GameConfigurationFile,
             }
         }
         AiPlayer::seed_random_number_generator(seed);
+    }
+
+}
+
+void BattleShip::Controller::setupGame(const std::string &GameConfigurationFile) {
+    BattleShip::PlayerConfiguration config = view->getPlayerConfiguration();
+    model.loadGameConfigurationFromFile(GameConfigurationFile);
+
+    if (config.numHumanPlayers > 0) {
+        for (int i = 0; i < config.numHumanPlayers; i++) {
+            view->getPlayerName(i+1);
+            model.addPlayer<HumanPlayer>(*view);
+            if(i == 0) {
+                model.getAttackingPlayer().placeShips();
+            }
+            else {
+                model.getDefendingPlayer().placeShips();
+            }
+        }
+    }
+    else if (config.numAiPlayers > 0) {
+        for (int i = 0; i < config.numAiPlayers; i++) {
+            int choice = view->getAiChoice();
+            switch (choice) {
+                case 1:
+                    model.addPlayer<CheatingAI>(*view);
+                    break;
+                case 2:
+                    model.addPlayer<RandomAI>(*view);
+                    break;
+                case 3:
+                    model.addPlayer<HuntDestroyAI>(*view);
+                    break;
+                default:
+                    exit(2);
+            }
+        }
     }
 
 }

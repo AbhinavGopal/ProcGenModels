@@ -87,3 +87,7 @@ void BattleShip::Player::setOpponent(BattleShip::Player &opponent) {
 bool BattleShip::Player::hit(char shipChar) {
 return false;
 }
+
+BattleShip::Player::~Player() {
+
+}
