@@ -43,15 +43,16 @@ std::string BattleShip::StandardView::getPlayerName(int i) {
 
 ShipPlacement BattleShip::StandardView::getShipPlacement(const BattleShip::Player &player, char shipChar, int shipLen) {
     auto vec = player.getBoard().getVisibleVersion();
+    out<<player.getName()<<" 's Board\n";
     for (std::string s : vec) {
         out<<s<<std::endl;
     }
-    out<< player.getName()<<" do you want to place "<<shipChar<<" horizontally or vertically?\nEnter h for horizontal or v for vertical\nYour choice:\n";
+    out<< player.getName()<<", do you want to place "<<shipChar<<" horizontally or vertically?\nEnter h for horizontal or v for vertical\nYour choice:\n";
     char direction;
     int rowStart;
     int colStart;
     in>>direction;
-    out << player.getName() << " enter the row and column you want to place "<<shipChar<< " which is "<< shipLen<<" long, at with a space in between row and col:\n";
+    out << player.getName() << ", enter the row and column you want to place "<<shipChar<< " which is "<< shipLen<<" long, at with a space in between row and col:\n";
     in>>rowStart;
     in>>colStart;
     int rowEnd;
@@ -68,7 +69,9 @@ ShipPlacement BattleShip::StandardView::getShipPlacement(const BattleShip::Playe
 }
 
 void BattleShip::StandardView::updateShipPlacementView(const BattleShip::Player& player) {
-    showPlacementBoard(player);
+    out<<player.getName()<<" 's Board\n";
+    printBoardAsVisible(player.getBoard());
+    out<<"\n";
 }
 
 std::pair<int, int> BattleShip::StandardView::getFiringCoordinate(const BattleShip::Player& attacker) {
@@ -86,8 +89,14 @@ void BattleShip::StandardView::showResultOfAttack(const BattleShip::Player &atta
     if (attackResult.hit) {
         out << attacker.getName() << " hit " << attacker.getOpponent().getName() << "'s " << attackResult.shipChar << "!" << std::endl;
         if (attackResult.destroyed) {
-            out << attacker.getName() << " destroyed " << attacker.getOpponent().getName() << "'s " << attackResult.shipChar << "!" << std::endl;
+            out << attacker.getName() << " destroyed " << attacker.getOpponent().getName() << "'s " << attackResult.shipChar << "\n" << std::endl;
         }
+        else{
+            out<<'\n';
+        }
+    }
+    else {
+        out << "Missed.\n" << std::endl;
     }
 }
 
@@ -111,10 +120,13 @@ void BattleShip::StandardView::printBoardAsVisible(const BattleShip::Board &boar
 }
 
 void BattleShip::StandardView::showPlayersBoard(const BattleShip::Player &player) {
+    out<<player.getName()<<" 's Firing Board\n";
     printBoardAsObscured(player.getOpponent().getBoard());
+    out<<"\n";
 }
 
 void BattleShip::StandardView::showPlacementBoard(const BattleShip::Player &player) {
+    out<<player.getName()<<" 's Placement Board\n";
     printBoardAsVisible(player.getBoard());
 }
 

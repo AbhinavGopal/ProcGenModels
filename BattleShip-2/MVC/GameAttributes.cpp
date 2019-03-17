@@ -33,7 +33,6 @@ BattleShip::GameAttributes::GameAttributes(std::istream& in) {
     in >> this->numCols;
     int numShips;
     in>>numShips;
-    shipAttributes.insert(std::pair<char,int>('C', 5));
     char ch= ' ';
     int len;
     for (int i=0;i<numShips;i++){
