@@ -34,7 +34,7 @@ BattleShip::PlayerConfiguration BattleShip::StandardView::getPlayerConfiguration
 }
 
 std::string BattleShip::StandardView::getPlayerName(int i) {
-    out <<"Player"<< i << " Please enter your name:";
+    out <<"Player "<< i << " Please enter your name: ";
     std::string name;
     in>>name;
     return name;

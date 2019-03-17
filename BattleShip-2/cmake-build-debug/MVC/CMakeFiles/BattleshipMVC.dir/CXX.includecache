@@ -6,16 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/AiPlayer.h
-random
--
-Player.h
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/Player.h
-View.h
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/View.h
-GameAttributes.h
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/GameAttributes.h
-
 /Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/AttackResult.h
 
 /Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/Board.h
@@ -30,69 +20,11 @@ Cell.h
 
 /Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/Cell.h
 
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/CheatingAI.h
-AiPlayer.h
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/AiPlayer.h
-
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/Controller.cpp
-stdexcept
--
-vector
--
-sstream
--
-PlayerConfiguration.h
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/PlayerConfiguration.h
-Controller.h
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/Controller.h
-HumanPlayer.h
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/HumanPlayer.h
-AiPlayer.h
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/AiPlayer.h
-StandardView.h
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/StandardView.h
-CheatingAI.h
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/CheatingAI.h
-RandomAI.h
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/RandomAI.h
-HuntDestroyAI.h
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/HuntDestroyAI.h
-
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/Controller.h
-memory
--
-string
--
-Model.h
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/Model.h
-View.h
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/View.h
-Player.h
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/Player.h
-Move.h
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/Move.h
-
 /Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/GameAttributes.h
 istream
 -
 map
 -
-
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/HumanPlayer.h
-Player.h
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/Player.h
-View.h
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/View.h
-GameAttributes.h
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/GameAttributes.h
-
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/HuntDestroyAI.h
-vector
--
-algorithm
--
-RandomAI.h
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/RandomAI.h
 
 /Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/Model.h
 vector
@@ -136,15 +68,19 @@ AttackResult.h
 
 /Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/PlayerConfiguration.h
 
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/RandomAI.h
-vector
--
+/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/ShipPlacement.h
+
+/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/StandardView.cpp
 algorithm
 -
-AiPlayer.h
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/AiPlayer.h
-
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/ShipPlacement.h
+vector
+-
+cctype
+-
+StandardView.h
+/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/StandardView.h
+Utility.h
+/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/Utility.h
 
 /Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/StandardView.h
 iostream
@@ -155,6 +91,16 @@ PlayerConfiguration.h
 /Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/PlayerConfiguration.h
 View.h
 /Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/View.h
+
+/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/Utility.h
+algorithm
+-
+iostream
+-
+stdexcept
+-
+random
+-
 
 /Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/View.h
 unordered_map
