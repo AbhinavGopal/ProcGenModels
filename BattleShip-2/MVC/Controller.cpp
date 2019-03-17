@@ -54,7 +54,8 @@ void BattleShip::Controller::setupGame(const std::string &GameConfigurationFile,
         }
         AiPlayer::seed_random_number_generator(seed);
     }
-
+    model.getAttackingPlayer().setOpponent(model.getDefendingPlayer());
+    model.getDefendingPlayer().setOpponent(model.getAttackingPlayer());
 }
 
 void BattleShip::Controller::setupGame(const std::string &GameConfigurationFile) {
@@ -63,14 +64,8 @@ void BattleShip::Controller::setupGame(const std::string &GameConfigurationFile)
 
     if (config.numHumanPlayers > 0) {
         for (int i = 0; i < config.numHumanPlayers; i++) {
-            view->getPlayerName(i+1);
+            //std::string name= view->getPlayerName(i+1);
             model.addPlayer<HumanPlayer>(*view);
-            if(i == 0) {
-                model.getAttackingPlayer().placeShips();
-            }
-            else {
-                model.getDefendingPlayer().placeShips();
-            }
         }
     }
     else if (config.numAiPlayers > 0) {
@@ -91,7 +86,8 @@ void BattleShip::Controller::setupGame(const std::string &GameConfigurationFile)
             }
         }
     }
-
+    model.getAttackingPlayer().setOpponent(model.getDefendingPlayer());
+    model.getDefendingPlayer().setOpponent(model.getAttackingPlayer());
 }
 
 void BattleShip::Controller::setupGame() {

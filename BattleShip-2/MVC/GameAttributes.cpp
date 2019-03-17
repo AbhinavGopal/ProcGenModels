@@ -6,33 +6,36 @@
 #include "GameAttributes.h"
 
 BattleShip::GameAttributes::GameAttributes() {
+    shipAttributes=std::map<char, int>();
     numRows = 10;
     numCols = 10;
-    shipAttributes.insert({'C', 5});
-    shipAttributes.insert({'B', 4});
-    shipAttributes.insert({'D', 3});
-    shipAttributes.insert({'S', 3});
-    shipAttributes.insert({'P', 2});
+    shipAttributes.insert(std::pair<char,int>('C', 5));
+    shipAttributes.insert(std::pair<char,int>('B', 4));
+    shipAttributes.insert(std::pair<char,int>('D', 3));
+    shipAttributes.insert(std::pair<char,int>('S', 3));
+    shipAttributes.insert(std::pair<char,int>('P', 2));
 }
 
 BattleShip::GameAttributes::GameAttributes(int numRows, int numCols) {
+    shipAttributes=std::map<char, int>();
     this->numRows = numRows;
     this->numCols = numCols;
-    shipAttributes.insert({'C', 5});
-    shipAttributes.insert({'B', 4});
-    shipAttributes.insert({'D', 3});
-    shipAttributes.insert({'S', 3});
-    shipAttributes.insert({'P', 2});
+    shipAttributes.insert(std::pair<char,int>('C', 5));
+    shipAttributes.insert(std::pair<char,int>('B', 4));
+    shipAttributes.insert(std::pair<char,int>('D', 3));
+    shipAttributes.insert(std::pair<char,int>('S', 3));
+    shipAttributes.insert(std::pair<char,int>('P', 2));
 }
 
 BattleShip::GameAttributes::GameAttributes(std::istream& in) {
+    shipAttributes=std::map<char, int>();
     in >> this->numRows;
     in >> this->numCols;
-    shipAttributes.insert({'C', 5});
-    shipAttributes.insert({'B', 4});
-    shipAttributes.insert({'D', 3});
-    shipAttributes.insert({'S', 3});
-    shipAttributes.insert({'P', 2});
+    shipAttributes.emplace(std::pair<char,int>('C', 5));
+    shipAttributes.insert(std::pair<char,int>('B', 4));
+    shipAttributes.insert(std::pair<char,int>('D', 3));
+    shipAttributes.insert(std::pair<char,int>('S', 3));
+    shipAttributes.insert(std::pair<char,int>('P', 2));
 }
 
 int BattleShip::GameAttributes::getNumRows() const {

@@ -6,7 +6,7 @@
 
 int BattleShip::Player::num_instances = 0;
 
-BattleShip::Player::Player(const BattleShip::GameAttributes &gameAttributes, BattleShip::View &view): id(num_instances-1), view(view),  board(gameAttributes.getNumRows(), gameAttributes.getNumCols()){
+BattleShip::Player::Player(const BattleShip::GameAttributes &gameAttributes,BattleShip::View &view): id(num_instances-1),  shipHealths(gameAttributes.getShipAttributes()), view(view),   board(gameAttributes.getNumRows(), gameAttributes.getNumCols()){
     num_instances+=1;
     }
 

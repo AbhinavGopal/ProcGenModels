@@ -37,15 +37,21 @@ std::string BattleShip::StandardView::getPlayerName(int i) {
     out <<"Player "<< i << " Please enter your name: ";
     std::string name;
     in>>name;
+
     return name;
 }
 
 ShipPlacement BattleShip::StandardView::getShipPlacement(const BattleShip::Player &player, char shipChar, int shipLen) {
-    out<< player.getName()<<"do you want to place"<<shipChar<<"horizontally or vertically?\nEnter h for horizontal or v for vertical\nYour choice:";
+    auto vec = player.getBoard().getVisibleVersion();
+    for (std::string s : vec) {
+        out<<s<<std::endl;
+    }
+    out<< player.getName()<<" do you want to place "<<shipChar<<" horizontally or vertically?\nEnter h for horizontal or v for vertical\nYour choice:";
     char direction;
     int rowStart;
     int colStart;
     in>>direction;
+    out << player.getName() << " enter the row and column you want to place "<<shipChar<< " which is "<< shipLen<<" long, at with a space in between row and col: ";
     in>>rowStart;
     in>>colStart;
     int rowEnd;

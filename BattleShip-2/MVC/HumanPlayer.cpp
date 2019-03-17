@@ -33,10 +33,11 @@ void BattleShip::HumanPlayer::placeShips() {
             itr++;
         }
     }
+
 }
 
 void BattleShip::HumanPlayer::initializeName() {
-    std::string name = getName();
+    std::string name= view.getPlayerName(id+2);
     setName(name);
 }
 

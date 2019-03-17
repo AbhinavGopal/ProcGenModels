@@ -5,21 +5,36 @@
 #include "Board.h"
 
 BattleShip::Board::Board(int numRows, int numCols, char blankChar) : blankChar (blankChar) {
-    std::vector<std::vector<Cell>> boardState(numRows);
-    for (int i = 0; i < numRows; i++) {
-        for (int j = 0; j < numCols; j++) {
+    boardState = std::vector<std::vector<Cell>> (numRows);
+    int i=0;
+    int j;
+    while(i < numRows) {
+        j=0;
+        while (j < numCols) {
             boardState[i].push_back(Cell(blankChar));
+            j++;
         }
+        i++;
     }
+
 }
 
 BattleShip::Board::Board(int numRows, int numCols) : blankChar ('*') {
-    std::vector<std::vector<Cell>> boardState(numRows);
-    for (int i = 0; i < numRows; i++) {
-        for (int j = 0; j < numCols; j++) {
+    boardState = std::vector<std::vector<Cell>> (numRows);
+    int l=boardState.size();
+    l+=1;
+    int i=0;
+    int j;
+    while (i < numRows) {
+        j=0;
+        while(j < numCols) {
             boardState[i].push_back(Cell(blankChar));
+            j++;
         }
+        i++;
     }
+
+
 }
 
 int BattleShip::Board::getNumRows() const {
@@ -27,28 +42,35 @@ int BattleShip::Board::getNumRows() const {
 }
 
 int BattleShip::Board::getNumCols() const {
-    return boardState[0].size();
+    return boardState.front().size();
 }
 
 std::vector<std::string> BattleShip::Board::getHiddenVersion() const{
     std::string str = "";
-    std::vector<std::string> vec;
-    for (int i = 0; i < getNumRows()-1; i++) {
-        for (int j = 0; j < getNumCols()-1; j++) {
+    std::vector<std::string> vec(getNumRows());
+    int i=0;
+    int j;
+    while (i < getNumRows()) {
+        j=0;
+        while (j < getNumCols()) {
             str += boardState[i][j].getContentsIfHidden();
+            str += " ";
+            j++;
         }
         vec[i] = str;
         str = "";
+        i++;
     }
     return vec;
 }
 
 std::vector<std::string> BattleShip::Board::getVisibleVersion() const{
     std::string str = "";
-    std::vector<std::string> vec;
+    std::vector<std::string> vec (getNumRows());
     for (int i = 0; i < getNumRows(); i++) {
         for (int j = 0; j < getNumCols(); j++) {
             str += boardState[i][j].getContentsIfVisible();
+            str += " ";
         }
         vec[i] = str;
         str = "";
@@ -57,7 +79,7 @@ std::vector<std::string> BattleShip::Board::getVisibleVersion() const{
 }
 
 bool BattleShip::Board::inBounds(int row, int col) const {
-    return (row < 0 || col < 0 || row >= getNumRows() || col >= getNumCols());
+    return !(row < 0 || col < 0 || row >= getNumRows() || col >= getNumCols());
 }
 
 BattleShip::Cell& BattleShip::Board::at(int i, int j) {

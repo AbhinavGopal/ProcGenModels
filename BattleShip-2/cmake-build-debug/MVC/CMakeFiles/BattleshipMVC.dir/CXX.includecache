@@ -6,21 +6,27 @@
 
 #IncludeRegexTransform: 
 
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/Board.cpp
-Board.h
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/Board.h
-
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/Board.h
-string
+/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/GameAttributes.cpp
+utility
 -
-vector
+Utility.h
+/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/Utility.h
+GameAttributes.h
+/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/GameAttributes.h
+
+/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/GameAttributes.h
+istream
 -
-ShipPlacement.h
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/ShipPlacement.h
-Cell.h
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/Cell.h
+map
+-
 
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/Cell.h
-
-/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/ShipPlacement.h
+/Users/abhinav_gpyahoocom/Downloads/BattleShip-2/MVC/Utility.h
+algorithm
+-
+iostream
+-
+stdexcept
+-
+random
+-
 
