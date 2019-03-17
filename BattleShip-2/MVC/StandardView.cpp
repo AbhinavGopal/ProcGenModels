@@ -43,7 +43,7 @@ std::string BattleShip::StandardView::getPlayerName(int i) {
 
 ShipPlacement BattleShip::StandardView::getShipPlacement(const BattleShip::Player &player, char shipChar, int shipLen) {
     auto vec = player.getBoard().getVisibleVersion();
-    out<<player.getName()<<" 's Board\n";
+    out<<player.getName()<<"'s Board\n";
     for (std::string s : vec) {
         out<<s<<std::endl;
     }
@@ -120,13 +120,13 @@ void BattleShip::StandardView::printBoardAsVisible(const BattleShip::Board &boar
 }
 
 void BattleShip::StandardView::showPlayersBoard(const BattleShip::Player &player) {
-    out<<player.getName()<<" 's Firing Board\n";
+    out<<player.getName()<<"'s Firing Board\n";
     printBoardAsObscured(player.getOpponent().getBoard());
     out<<"\n";
 }
 
 void BattleShip::StandardView::showPlacementBoard(const BattleShip::Player &player) {
-    out<<player.getName()<<" 's Placement Board\n";
+    out<<player.getName()<<"'s Placement Board\n";
     printBoardAsVisible(player.getBoard());
 }
 
