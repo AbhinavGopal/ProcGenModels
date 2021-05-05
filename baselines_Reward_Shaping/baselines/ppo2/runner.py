@@ -25,12 +25,12 @@ class Runner(AbstractEnvRunner):
         epinfos = []
 
         #Find the walls in the observation state space
-        wall_colors = []
-        for i in range(25):
-            for j in range(20):
-                for k in range(20):
-                    if (155+i, 180+j, 185+k) != (164, 180, 198): 
-                        wall_colors.append((155+i, 180+j, 185+k))   
+        # wall_colors = []
+        # for i in range(25):
+        #     for j in range(20):
+        #         for k in range(20):
+        #             if (155+i, 180+j, 185+k) != (164, 180, 198): 
+        #                 wall_colors.append((155+i, 180+j, 185+k))   
 
         # For n in range number of steps
         for _ in range(self.nsteps):
@@ -55,12 +55,12 @@ class Runner(AbstractEnvRunner):
                 agent_location = np.where(np.all(self.obs[i, :, :] == agent_color, axis=-1))
 
                 wall_candidates = []
-                for j in range(1,15):
+                for j in range(1,10):
                     wall_candidates.append((agent_location[0][0] - j, agent_location[1][0]))
 
                 isWall = False
                 for x, y in wall_candidates:
-                    if (self.obs[i, x, y][0], self.obs[i, x, y][1], self.obs[i, x, y][2]) in wall_colors:
+                	if (self.obs[i,x,y] != [164, 180, 198]) and (155 < self.obs[i,x,y][0] < 180) and (180 < self.obs[i,x,y][1] < 200) and (185 < self.obs[i,x,y][2] < 205)
                         # self.obs[i, x, y] = np.array([255,255,255])
                         isWall = True
                         # plt.imshow(self.obs[i])
