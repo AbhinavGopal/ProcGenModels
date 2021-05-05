@@ -1,6 +1,6 @@
 import numpy as np
 from baselines.common.runners import AbstractEnvRunner
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 class Runner(AbstractEnvRunner):
     """
