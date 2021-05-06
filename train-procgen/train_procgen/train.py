@@ -13,7 +13,7 @@ from baselines import logger
 from mpi4py import MPI
 import argparse
 
-def train_fn(env_name, num_envs, distribution_mode, num_levels, start_level, timesteps_per_proc, is_test_worker=False, log_dir='/tmp/procgen', comm=None):
+def train_fn(env_name, num_envs, distribution_mode, num_levels, start_level, timesteps_per_proc, is_test_worker=False, log_dir='/tmp/procgen', comm=None, conv_dim=[16,32,32]):
     learning_rate = 5e-4
     ent_coef = .01
     gamma = .999
@@ -49,7 +49,7 @@ def train_fn(env_name, num_envs, distribution_mode, num_levels, start_level, tim
     sess = tf.Session(config=config)
     sess.__enter__()
 
-    conv_fn = lambda x: build_impala_cnn(x, depths=[16,32,32], emb_size=256)
+    conv_fn = lambda x: build_impala_cnn(x, depths=conv_dim, emb_size=256)
 
     logger.info("training")
     ppo2.learn(
@@ -85,6 +85,7 @@ def main():
     parser.add_argument('--test_worker_interval', type=int, default=0)
     parser.add_argument('--timesteps_per_proc', type=int, default=50_000_000)
     parser.add_argument('--log_dir', type=str, default='/tmp/procgen')
+    parser.add_argument('--conv_dim', type=int, nargs=3, default=[16, 32, 32], help="dimensions for convolution")
 
     args = parser.parse_args()
 
@@ -105,7 +106,8 @@ def main():
         args.timesteps_per_proc,
         is_test_worker=is_test_worker,
         log_dir=args.log_dir,
-        comm=comm)
+        comm=comm,
+        conv_dim=args.conv_dim)
 
 if __name__ == '__main__':
     main()
