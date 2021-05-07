@@ -13,7 +13,7 @@ from baselines import logger
 from mpi4py import MPI
 import argparse
 
-def train_fn(env_name, num_envs, distribution_mode, num_levels, start_level, timesteps_per_proc, is_test_worker=False, log_dir='/tmp/procgen', comm=None, conv_dim=[16,32,32]):
+def train_fn(env_name, num_envs, distribution_mode, num_levels, start_level, timesteps_per_proc, is_test_worker=False, log_dir='/tmp/procgen', comm=None, conv_dim=[16,32,32], load_path='/tmp/procgen/checkpoints'):
     learning_rate = 5e-4
     ent_coef = .01
     gamma = .999
@@ -56,7 +56,7 @@ def train_fn(env_name, num_envs, distribution_mode, num_levels, start_level, tim
         env=venv,
         network=conv_fn,
         total_timesteps=timesteps_per_proc,
-        save_interval=0,
+        save_interval=30,
         nsteps=nsteps,
         nminibatches=nminibatches,
         lam=lam,
@@ -73,6 +73,7 @@ def train_fn(env_name, num_envs, distribution_mode, num_levels, start_level, tim
         init_fn=None,
         vf_coef=0.5,
         max_grad_norm=0.5,
+        load_path=load_path,
     )
 
 def main():
@@ -86,7 +87,7 @@ def main():
     parser.add_argument('--timesteps_per_proc', type=int, default=50_000_000)
     parser.add_argument('--log_dir', type=str, default='/tmp/procgen')
     parser.add_argument('--conv_dim', type=int, nargs=3, default=[16, 32, 32], help="dimensions for convolution")
-
+    parser.add_argument('--load_path', type=str, default=None)
     args = parser.parse_args()
 
     comm = MPI.COMM_WORLD
@@ -107,7 +108,8 @@ def main():
         is_test_worker=is_test_worker,
         log_dir=args.log_dir,
         comm=comm,
-        conv_dim=args.conv_dim)
+        conv_dim=args.conv_dim,
+        load_path=args.load_path)
 
 if __name__ == '__main__':
     main()
