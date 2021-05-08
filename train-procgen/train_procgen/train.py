@@ -93,7 +93,7 @@ def rollout_fn(num_steps, env_name, num_envs, distribution_mode, num_levels, sta
     if log_dir is not None:
         log_comm = comm.Split(1 if is_test_worker else 0, 0)
         format_strs = ['csv', 'stdout'] if log_comm.Get_rank() == 0 else []
-        logger.configure(comm=log_comm, dir=log_dir, format_strs=format_strs)
+        logger.configure(comm=log_comm, dir=log_dir, format_strs=format_strs, filename="rollout")
 
     logger.info("creating environment")
     venv = ProcgenEnv(num_envs=num_envs, env_name=env_name, num_levels=num_levels, start_level=start_level, distribution_mode=distribution_mode)

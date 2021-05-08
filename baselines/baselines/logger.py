@@ -171,16 +171,16 @@ class TensorBoardOutputFormat(KVWriter):
             self.writer.Close()
             self.writer = None
 
-def make_output_format(format, ev_dir, log_suffix=''):
+def make_output_format(format, ev_dir, log_suffix='', filename='progress'):
     os.makedirs(ev_dir, exist_ok=True)
     if format == 'stdout':
         return HumanOutputFormat(sys.stdout)
     elif format == 'log':
         return HumanOutputFormat(osp.join(ev_dir, 'log%s.txt' % log_suffix))
     elif format == 'json':
-        return JSONOutputFormat(osp.join(ev_dir, 'progress%s.json' % log_suffix))
+        return JSONOutputFormat(osp.join(ev_dir, '%s%s.json' % (filename, log_suffix)))
     elif format == 'csv':
-        return CSVOutputFormat(osp.join(ev_dir, 'progress%s.csv' % log_suffix))
+        return CSVOutputFormat(osp.join(ev_dir, '%s%s.csv' % (filename, log_suffix)))
     elif format == 'tensorboard':
         return TensorBoardOutputFormat(osp.join(ev_dir, 'tb%s' % log_suffix))
     else:
@@ -369,7 +369,7 @@ def get_rank_without_mpi_import():
     return 0
 
 
-def configure(dir=None, format_strs=None, comm=None, log_suffix=''):
+def configure(dir=None, format_strs=None, comm=None, log_suffix='', filename='progress'):
     """
     If comm is provided, average all numerical stats across that comm
     """
@@ -392,7 +392,7 @@ def configure(dir=None, format_strs=None, comm=None, log_suffix=''):
         else:
             format_strs = os.getenv('OPENAI_LOG_FORMAT_MPI', 'log').split(',')
     format_strs = filter(None, format_strs)
-    output_formats = [make_output_format(f, dir, log_suffix) for f in format_strs]
+    output_formats = [make_output_format(f, dir, log_suffix, filename) for f in format_strs]
 
     Logger.CURRENT = Logger(dir=dir, output_formats=output_formats, comm=comm)
     if output_formats:

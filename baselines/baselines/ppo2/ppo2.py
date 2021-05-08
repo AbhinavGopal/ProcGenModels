@@ -427,7 +427,7 @@ def rollout(*, network, env, total_timesteps, eval_env = None, seed=None, nsteps
         rewards.append(reward)
 
         #Logging reward, timesteps, and numsteps
-        logger.logkv("numsteps", num_steps)
+        logger.logkv("numsteps", i)
         logger.logkv("timesteps", timesteps)
         logger.logkv("episode_reward_mean", safemean(reward))
         logger.dumpkvs()
