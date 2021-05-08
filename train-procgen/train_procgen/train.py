@@ -13,7 +13,7 @@ from baselines import logger
 from mpi4py import MPI
 import argparse
 
-def train_fn(env_name, num_envs, distribution_mode, num_levels, start_level, timesteps_per_proc, is_test_worker=False, log_dir='/tmp/procgen', comm=None, conv_dim=[16,32,32], load_path='/tmp/procgen/checkpoints'):
+def train_fn(env_name, num_envs, distribution_mode, num_levels, start_level, timesteps_per_proc, is_test_worker=False, log_dir='/tmp/procgen', comm=None, conv_dim=[16,32,32], load_path=None):
     learning_rate = 5e-4
     ent_coef = .01
     gamma = .999
@@ -76,6 +76,75 @@ def train_fn(env_name, num_envs, distribution_mode, num_levels, start_level, tim
         load_path=load_path,
     )
 
+def rollout_fn(num_steps, env_name, num_envs, distribution_mode, num_levels, start_level, timesteps_per_proc, is_test_worker=False, log_dir='/tmp/procgen', comm=None, load_path=None):
+    learning_rate = 5e-4
+    ent_coef = .01
+    gamma = .999
+    lam = .95
+    nsteps = 256
+    nminibatches = 8
+    ppo_epochs = 3
+    clip_range = .2
+    use_vf_clipping = True
+
+    mpi_rank_weight = 0 if is_test_worker else 1
+    num_levels = 0 if is_test_worker else num_levels
+
+    if log_dir is not None:
+        log_comm = comm.Split(1 if is_test_worker else 0, 0)
+        format_strs = ['csv', 'stdout'] if log_comm.Get_rank() == 0 else []
+        logger.configure(comm=log_comm, dir=log_dir, format_strs=format_strs)
+
+    logger.info("creating environment")
+    venv = ProcgenEnv(num_envs=num_envs, env_name=env_name, num_levels=num_levels, start_level=start_level, distribution_mode=distribution_mode)
+    venv = VecExtractDictObs(venv, "rgb")
+
+    venv = VecMonitor(
+        venv=venv, filename=None, keep_buf=100,
+    )
+
+    venv = VecNormalize(venv=venv, ob=False)
+
+    logger.info("creating tf session")
+    setup_mpi_gpus()
+    config = tf.ConfigProto()
+    config.gpu_options.allow_growth = True #pylint: disable=E1101
+    sess = tf.Session(config=config)
+    sess.__enter__()
+
+    conv_fn = lambda x: build_impala_cnn(x, depths=[16,32,32], emb_size=256)
+
+    logger.info("training")
+    ppo2.rollout(
+        env=venv,
+        network=conv_fn,
+        total_timesteps=timesteps_per_proc,
+        save_interval=0,
+        nsteps=nsteps,
+        nminibatches=nminibatches,
+        lam=lam,
+        gamma=gamma,
+        noptepochs=ppo_epochs,
+        log_interval=1,
+        ent_coef=ent_coef,
+        mpi_rank_weight=mpi_rank_weight,
+        clip_vf=use_vf_clipping,
+        comm=comm,
+        lr=learning_rate,
+        cliprange=clip_range,
+        update_fn=None,
+        init_fn=None,
+        vf_coef=0.5,
+        max_grad_norm=0.5,
+        load_path = load_path,
+        num_steps=num_steps,
+        num_envs=num_envs, 
+        env_name=env_name,
+        num_levels=num_levels, 
+        start_level=start_level, 
+        distribution_mode=distribution_mode
+    )
+
 def main():
     parser = argparse.ArgumentParser(description='Process procgen training arguments.')
     parser.add_argument('--env_name', type=str, default='coinrun')
@@ -88,6 +157,7 @@ def main():
     parser.add_argument('--log_dir', type=str, default='/tmp/procgen')
     parser.add_argument('--conv_dim', type=int, nargs=3, default=[16, 32, 32], help="dimensions for convolution")
     parser.add_argument('--load_path', type=str, default=None)
+    parser.add_argument('--rollout', type=int, default=0)
     args = parser.parse_args()
 
     comm = MPI.COMM_WORLD
@@ -98,18 +168,30 @@ def main():
 
     if test_worker_interval > 0:
         is_test_worker = rank % test_worker_interval == (test_worker_interval - 1)
-
-    train_fn(args.env_name,
-        args.num_envs,
-        args.distribution_mode,
-        args.num_levels,
-        args.start_level,
-        args.timesteps_per_proc,
-        is_test_worker=is_test_worker,
-        log_dir=args.log_dir,
-        comm=comm,
-        conv_dim=args.conv_dim,
-        load_path=args.load_path)
+    if args.rollout != 0:
+        rollout_fn(args.rollout, 
+            args.env_name,
+            args.num_envs,
+            args.distribution_mode,
+            args.num_levels,
+            args.start_level,
+            args.timesteps_per_proc,
+            is_test_worker=is_test_worker,
+            log_dir=args.log_dir,
+            comm=comm,
+            load_path=args.load_path)
+    else:
+        train_fn(args.env_name,
+            args.num_envs,
+            args.distribution_mode,
+            args.num_levels,
+            args.start_level,
+            args.timesteps_per_proc,
+            is_test_worker=is_test_worker,
+            log_dir=args.log_dir,
+            comm=comm,
+            conv_dim=args.conv_dim,
+            load_path=args.load_path)
 
 if __name__ == '__main__':
     main()
