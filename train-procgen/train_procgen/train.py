@@ -56,7 +56,7 @@ def train_fn(env_name, num_envs, distribution_mode, num_levels, start_level, tim
         env=venv,
         network=conv_fn,
         total_timesteps=timesteps_per_proc,
-        save_interval=30,
+        save_interval=100,
         nsteps=nsteps,
         nminibatches=nminibatches,
         lam=lam,
