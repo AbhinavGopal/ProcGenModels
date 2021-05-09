@@ -13,7 +13,7 @@ from baselines import logger
 from mpi4py import MPI
 import argparse
 
-def train_fn(env_name, num_envs, distribution_mode, num_levels, start_level, timesteps_per_proc, is_test_worker=False, log_dir='/tmp/procgen', comm=None, conv_dim=[16,32,32], load_path=None):
+def train_fn(env_name, num_envs, distribution_mode, num_levels, start_level, timesteps_per_proc, is_test_worker=False, log_dir='/tmp/procgen', comm=None, conv_dim=[16,32,32], load_path=None, reward=0):
     learning_rate = 5e-4
     ent_coef = .01
     gamma = .999
@@ -74,6 +74,7 @@ def train_fn(env_name, num_envs, distribution_mode, num_levels, start_level, tim
         vf_coef=0.5,
         max_grad_norm=0.5,
         load_path=load_path,
+        reward=reward
     )
 
 def rollout_fn(num_steps, env_name, num_envs, distribution_mode, num_levels, start_level, timesteps_per_proc, is_test_worker=False, log_dir='/tmp/procgen', comm=None, load_path=None):
@@ -158,6 +159,7 @@ def main():
     parser.add_argument('--conv_dim', type=int, nargs=3, default=[16, 32, 32], help="dimensions for convolution")
     parser.add_argument('--load_path', type=str, default=None)
     parser.add_argument('--rollout', type=int, default=0)
+    parser.add_argument('--reward', type=int, default=0)
     args = parser.parse_args()
 
     comm = MPI.COMM_WORLD
@@ -191,7 +193,8 @@ def main():
             log_dir=args.log_dir,
             comm=comm,
             conv_dim=args.conv_dim,
-            load_path=args.load_path)
+            load_path=args.load_path,
+            reward=args.reward)
 
 if __name__ == '__main__':
     main()

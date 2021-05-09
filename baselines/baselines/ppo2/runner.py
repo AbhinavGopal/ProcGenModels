@@ -1,5 +1,6 @@
 import numpy as np
 from baselines.common.runners import AbstractEnvRunner
+# import matplotlib.pyplot as plt
 
 class Runner(AbstractEnvRunner):
     """
@@ -10,12 +11,14 @@ class Runner(AbstractEnvRunner):
     run():
     - Make a mini batch
     """
-    def __init__(self, *, env, model, nsteps, gamma, lam):
+    def __init__(self, *, env, model, nsteps, gamma, lam, reward=0):
         super().__init__(env=env, model=model, nsteps=nsteps)
         # Lambda used in GAE (General Advantage Estimation)
         self.lam = lam
         # Discount rate
         self.gamma = gamma
+        #The negative reward for agent hitting walls
+        self.reward = reward
 
     def run(self):
         # Here, we init the lists that will contain the mb of experiences
@@ -36,6 +39,31 @@ class Runner(AbstractEnvRunner):
             # Take actions in env and look the results
             # Infos contains a ton of useful informations
             self.obs[:], rewards, self.dones, infos = self.env.step(actions)
+
+            #If we want to use reward shaping for agent hitting walls
+            if self.reward:
+                #Loop through all the rewards and check if there are walls above agent
+                for i in range(rewards.shape[0]):
+                    # plt.imshow(self.obs[i])
+                    # plt.savefig("procgen0.png")
+                    agent_color = (164, 180, 198)
+                    agent_location = np.where(np.all(self.obs[i, :, :] == agent_color, axis=-1))
+
+                    wall_candidates = []
+                    for j in range(1,10):
+                        wall_candidates.append((agent_location[0][0] - j, agent_location[1][0]))
+
+                    isWall = False
+                    for x, y in wall_candidates:
+                        #Find the walls in the observation state space and exclude agent color
+                        if (not np.array_equal(self.obs[i,x,y], np.array([164, 180, 198]))) and (155 < self.obs[i,x,y][0] < 180) and (180 < self.obs[i,x,y][1] < 200) and (185 < self.obs[i,x,y][2] < 205):
+                            # self.obs[i, x, y] = np.array([255,255,255])
+                            isWall = True
+                            # plt.imshow(self.obs[i])
+                            # plt.savefig("procgen1.png")
+                    if isWall:
+                        rewards[i] -= self.reward
+
             for info in infos:
                 maybeepinfo = info.get('episode')
                 if maybeepinfo: epinfos.append(maybeepinfo)
