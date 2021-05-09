@@ -42,6 +42,17 @@ def train_fn(env_name, num_envs, distribution_mode, num_levels, start_level, tim
 
     venv = VecNormalize(venv=venv, ob=False)
 
+    logger.info("creating evalulation environment")
+    #Assuming we train from levels 0-200
+    eval_env = ProcgenEnv(num_envs=num_envs, env_name=env_name, num_levels=num_levels, start_level=201, distribution_mode=distribution_mode)
+    eval_env = VecExtractDictObs(eval_env, "rgb")
+
+    eval_env = VecMonitor(
+        venv=eval_env, filename=None, keep_buf=100,
+    )
+
+    eval_env = VecNormalize(venv=eval_env, ob=False)
+
     logger.info("creating tf session")
     setup_mpi_gpus()
     config = tf.ConfigProto()
@@ -54,6 +65,7 @@ def train_fn(env_name, num_envs, distribution_mode, num_levels, start_level, tim
     logger.info("training")
     ppo2.learn(
         env=venv,
+        eval_env=eval_env,
         network=conv_fn,
         total_timesteps=timesteps_per_proc,
         save_interval=100,
