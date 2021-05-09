@@ -13,7 +13,8 @@ from baselines import logger
 from mpi4py import MPI
 import argparse
 
-def train_fn(env_name, num_envs, distribution_mode, num_levels, start_level, timesteps_per_proc, is_test_worker=False, log_dir='/tmp/procgen', comm=None, conv_dim=[16,32,32], load_path=None, reward=0):
+def train_fn(env_name, num_envs, distribution_mode, num_levels, start_level, timesteps_per_proc, is_test_worker=False,
+             log_dir='/tmp/procgen', comm=None, conv_dim=[16,32,32], load_path=None, reward=0, optimizer='adam'):
     learning_rate = 5e-4
     ent_coef = .01
     gamma = .999
@@ -86,7 +87,8 @@ def train_fn(env_name, num_envs, distribution_mode, num_levels, start_level, tim
         vf_coef=0.5,
         max_grad_norm=0.5,
         load_path=load_path,
-        reward=reward
+        reward=reward,
+        optimizer=optimizer
     )
 
 def rollout_fn(num_steps, env_name, num_envs, distribution_mode, num_levels, start_level, timesteps_per_proc, is_test_worker=False, log_dir='/tmp/procgen', comm=None, load_path=None):
@@ -172,6 +174,7 @@ def main():
     parser.add_argument('--load_path', type=str, default=None)
     parser.add_argument('--rollout', type=int, default=0)
     parser.add_argument('--reward', type=int, default=0)
+    parser.add_argument('--optimizer', type=str, default='adam', choices=['adam', 'adagrad', 'rmsprop'])
     args = parser.parse_args()
 
     comm = MPI.COMM_WORLD
@@ -193,7 +196,8 @@ def main():
             is_test_worker=is_test_worker,
             log_dir=args.log_dir,
             comm=comm,
-            load_path=args.load_path)
+            load_path=args.load_path,
+            optimizer=args.optimizer)
     else:
         train_fn(args.env_name,
             args.num_envs,

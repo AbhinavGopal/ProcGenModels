@@ -25,7 +25,7 @@ class Model(object):
     - Save load the model
     """
     def __init__(self, *, policy, ob_space, ac_space, nbatch_act, nbatch_train,
-                nsteps, ent_coef, vf_coef, max_grad_norm, mpi_rank_weight=1, comm=None, microbatch_size=None):
+                nsteps, ent_coef, vf_coef, max_grad_norm, mpi_rank_weight=1, comm=None, microbatch_size=None, optimizer='adam'):
         self.sess = sess = get_session()
 
         if MPI is not None and comm is None:
@@ -94,8 +94,12 @@ class Model(object):
         # 1. Get the model parameters
         params = tf.trainable_variables('ppo2_model')
         # 2. Build our trainer
-        if comm is not None and comm.Get_size() > 1:
+        if comm is not None and comm.Get_size() > 1 and optimizer =='adam':
             self.trainer = MpiAdamOptimizer(comm, learning_rate=LR, mpi_rank_weight=mpi_rank_weight, epsilon=1e-5)
+        elif optimizer == 'adagrad':
+            self.trainer = tf.train.AdagradOptimizer(learning_rate=LR)
+        elif optimizer == 'rmsprop':
+            self.trainer = tf.train.RMSPropOptimizer(learning_rate=LR)
         else:
             self.trainer = tf.train.AdamOptimizer(learning_rate=LR, epsilon=1e-5)
         # 3. Calculate the gradients
