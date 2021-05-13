@@ -1,7 +1,7 @@
 # ProcGenModels
 Models for ProcGen Environment
 
-To train the models, please use download the baseline_reward_shaping.ipynb notebook in this repo. The jupyter notebook will clone this repo as in the first cell. 
+To train the models, please use download the baseline_reward_shaping.ipynb notebook in this repo.
 To run generate the plots, download all the log .csv files in the Gradescope submission and change to load the appropriate path. 
 
 
