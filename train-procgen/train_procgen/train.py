@@ -45,7 +45,7 @@ def train_fn(env_name, num_envs, distribution_mode, num_levels, start_level, tim
 
     logger.info("creating evalulation environment")
     #Assuming we train from levels 0-200
-    eval_env = ProcgenEnv(num_envs=num_envs, env_name=env_name, num_levels=num_levels, start_level=201, distribution_mode=distribution_mode)
+    eval_env = ProcgenEnv(num_envs=num_envs, env_name=env_name, num_levels=num_levels, start_level=501, distribution_mode=distribution_mode)
     eval_env = VecExtractDictObs(eval_env, "rgb")
 
     eval_env = VecMonitor(
